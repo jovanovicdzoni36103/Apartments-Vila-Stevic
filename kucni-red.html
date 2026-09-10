@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<!--
+  VILA & SPA STEVIĆ, Srebrno jezero. Statični sajt: 8 stranica, bez build koraka i bez biblioteka.
+
+  FAJLOVI
+  index.html, smestaj.html, spa.html, galerija.html, vauceri.html, o-nama.html, kucni-red.html, kontakt.html
+  css/stil.css    stilovi (boje, razmaci i fontovi su u :root)
+  js/skripta.js   traka za termin, Booking deep link, prenos termina između stranica, forme, animacije, lightbox
+  slike/          fotografije vlasnika (07.09.2026), smanjene na 1600 px, bez EXIF podataka; dron snimci su sa starog sajta
+  Navigacija i podnožje su isti na svim stranicama; menjaju se u svakom fajlu.
+
+  OZNAKE NA STRANICAMA
+  žuto (.tbd)                 podatak koji vlasnik treba da potvrdi
+  isprekidani okvir           mesto za tekst ili fotografiju koje vlasnik popunjava (.mesto-za-tekst, figure.prazno)
+
+  SLIKE se menjaju na JEDNOM mestu: objekat SLIKE na vrhu js/skripta.js. Jedna slika = jedna vrednost.
+  FORME nemaju backend: mailto i WhatsApp sa popunjenom porukom. Endpoint ide u const FORM_ENDPOINT u js/skripta.js.
+  og:image mora biti puna adresa (https://domen/slike/vila-dan.jpg) kad sajt dobije domen.
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kućni red | Vila &amp; SPA Stević, Srebrno jezero</title>
+<meta name="description" content="Kućni red Vile Stević: prijava od 14h, odjava do 10h, tišina posle 22h, bez kućnih ljubimaca.">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="sr_RS">
+<meta property="og:title" content="Kućni red | Vila &amp; SPA Stević, Srebrno jezero">
+<meta property="og:description" content="Kućni red Vile Stević: prijava od 14h, odjava do 10h, tišina posle 22h, bez kućnih ljubimaca.">
+<meta property="og:image" content="https://vilastevic.com/slike/og-vila-stevic.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Vila &amp; SPA Stević, ulaz i dvorište">
+<link rel="canonical" href="https://vilastevic.com/kucni-red.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:url" content="https://vilastevic.com/kucni-red.html">
+<meta property="og:site_name" content="Vila &amp; SPA Stević">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kućni red | Vila &amp; SPA Stević, Srebrno jezero">
+<meta name="twitter:description" content="Kućni red Vile Stević: prijava od 14h, odjava do 10h, tišina posle 22h, bez kućnih ljubimaca.">
+<meta name="twitter:image" content="https://vilastevic.com/slike/og-vila-stevic.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="css/stil.css">
+</head>
+<body>
+<a class="preskoci" href="#glavno">Pređi na sadržaj</a>
+
+<header class="nav">
+  <div class="nav__unutra">
+    <a class="nav__ime" href="index.html">Vila &amp; SPA Stević</a>
+    <nav aria-label="Glavna navigacija">
+      <ul class="nav__linkovi">
+        <li><a href="smestaj.html">Smeštaj</a></li><li><a href="spa.html">SPA</a></li><li><a href="galerija.html">Galerija</a></li><li><a href="vauceri.html">Vaučeri</a></li><li><a href="o-nama.html">O nama</a></li><li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </nav>
+    <a class="dugme dugme--primarno dugme--malo nav__cta" href="index.html#termin" data-cta="nav-termin">Proveri termin</a>
+    <button class="nav__hamburger" type="button" aria-expanded="false" aria-controls="meni" aria-label="Otvori meni"><span></span></button>
+  </div>
+</header>
+
+<div class="meni" id="meni">
+  <a href="index.html">Početna</a><a href="smestaj.html">Smeštaj</a><a href="spa.html">SPA</a><a href="galerija.html">Galerija</a><a href="vauceri.html">Vaučeri</a><a href="o-nama.html">O nama</a><a href="kucni-red.html" aria-current="page">Kućni red</a><a href="kontakt.html">Kontakt</a>
+  <a class="dugme dugme--primarno" href="index.html#termin" data-cta="meni-termin">Proveri termin</a>
+  <p class="meni__kontakt">Jezerska bb, Beli Bagrem, Srebrno jezero<br><a href="tel:+381644500600">064/4500-600</a> · <a href="mailto:vilastevic@gmail.com">vilastevic@gmail.com</a></p>
+</div>
+
+<main id="glavno">
+
+  <header class="zaglavlje">
+    <div class="kontejner">
+      <div class="sekcija__uvod" data-stagger><h1 class="naslov anim">Kućni red.</h1><p class="podnaslov anim">Da bismo vam obezbedili prijatniji boravak i otklonili moguće nesporazume, molimo da se upoznate sa kućnim redom Vile Stević.</p></div>
+    </div>
+  </header>
+
+  <section class="sekcija sekcija--siva sekcija--kratka" style="padding-top:0">
+    <div class="kontejner">
+      <ul class="istaknuto" data-stagger>
+        <li class="anim"><strong>14h</strong><span>Prijava od</span></li>
+        <li class="anim"><strong>10h</strong><span>Odjava do</span></li>
+        <li class="anim"><strong>22h</strong><span>Tišina posle</span></li>
+        <li class="anim"><strong>Ne</strong><span>Kućni ljubimci</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sekcija">
+    <div class="kontejner">
+      <ol class="pravila" data-stagger>
+        <li class="anim"><span>Izdavanje soba se vrši isključivo preko recepcije.</span></li><li class="anim"><span>Soba se izdaje od <strong>14h</strong> jednog dana, a napušta do <strong>10h</strong> narednog dana.</span></li><li class="anim"><span>Gosti su dužni da lične stvari od vrednosti, dragocenosti i novac deponuju recepciji na čuvanje. U protivnom ne odgovaramo za eventualni nestanak.</span></li><li class="anim"><span>Posete u vašoj sobi za vreme boravka nisu dozvoljene.</span></li><li class="anim"><span>Proslave rođendana, momačkih i devojačkih večeri nisu dozvoljene.</span></li><li class="anim"><span>U sobama se ne smeju koristiti rešoi, kuvala, grejalice i slično, kako ne bi došlo do oštećenja ili požara.</span></li><li class="anim"><span>Gosti su dužni da pregledaju inventar u sobi kada se smeste. Ukoliko uočite oštećenja ili da nešto nedostaje sa inventar liste, prijavite to recepciji.</span></li><li class="anim"><span>Prilikom odjavljivanja zajedno sa vama vršimo kontrolu inventara u sobi. Svako oštećenje ili nestanak biće naplaćen.</span></li><li class="anim"><span>U sobe se ne mogu uvoditi kućni ljubimci, jer objekat nije registrovan za iste.</span></li><li class="anim"><span>Gosti ne smeju izazivati neugodnu buku i time remetiti kućni red. Posle 22h zabranjena je glasna muzika u sobama.</span></li><li class="anim"><span>Zadržavamo pravo da vam otkažemo korišćenje usluga ukoliko ne poštujete kućni red.</span></li>
+      </ol>
+      <p class="smestaj__napomena anim" style="margin-top:48px"><strong>Vila &amp; SPA Stević</strong><br>Pitanja oko boravka: <a class="link" href="kontakt.html" data-cta="kucni-red-kontakt">Kontakt</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="podnozje">
+  <div class="kontejner kontejner--sirok">
+    <div class="podnozje__mreza">
+      <div>
+        <p class="podnozje__ime">Vila &amp; SPA Stević</p>
+        <address>Jezerska bb, Beli Bagrem<br>Srebrno jezero, Veliko Gradište</address>
+        <p class="podnozje__stranica" style="margin-top:8px">Od 2002. na Srebrnom jezeru.</p>
+      </div>
+      <div>
+        <p class="podnozje__ime">Stranice</p>
+        <ul class="podnozje__linkovi">
+          <li><a href="index.html">Početna</a></li><li><a href="smestaj.html">Smeštaj</a></li><li><a href="spa.html">SPA</a></li><li><a href="galerija.html">Galerija</a></li><li><a href="vauceri.html">Vaučeri</a></li><li><a href="o-nama.html">O nama</a></li><li><a href="kucni-red.html">Kućni red</a></li><li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="podnozje__ime">Kontakt</p>
+        <p><a href="tel:+381644500600" data-cta="podnozje-poziv">064/4500-600</a><br><a href="mailto:vilastevic@gmail.com" data-cta="podnozje-mejl-tekst">vilastevic@gmail.com</a></p>
+        <div class="podnozje__ikone" style="margin-top:12px">
+          <a class="js-wa" href="https://wa.me/381644500600" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp" data-cta="podnozje-whatsapp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-5A8 8 0 1 1 21 12z"/></svg></a>
+          <a href="viber://chat?number=%2B381644500600" aria-label="Viber" title="Viber" data-cta="podnozje-viber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-5A8 8 0 1 1 21 12z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></svg></a>
+          <a href="mailto:vilastevic@gmail.com" aria-label="Mejl" title="Mejl" data-cta="podnozje-mejl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="podnozje__dno">
+      <p><a href="kucni-red.html">Kućni red</a> · <a href="kontakt.html">Kontakt</a></p>
+      <p>© <span id="godina">2026</span> Vila &amp; SPA Stević</p>
+    </div>
+  </div>
+</footer>
+
+<nav class="mobilna" aria-label="Brze akcije">
+  <a href="tel:+381644500600" data-cta="mobilna-poziv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Pozovi</a>
+  <a class="js-wa" href="https://wa.me/381644500600" target="_blank" rel="noopener" data-cta="mobilna-whatsapp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-5A8 8 0 1 1 21 12z"/></svg>WhatsApp</a>
+  <a class="mobilna__booking js-booking" href="https://www.booking.com/hotel/rs/vila-stevia.html" target="_blank" rel="noopener" data-cta="mobilna-booking">Booking</a>
+</nav>
+
+<!-- FORME: pravi endpoint (Formspree ili Web3Forms) se upisuje u const FORM_ENDPOINT na vrhu js/skripta.js. Jedna linija. -->
+<script src="js/skripta.js"></script>
+</body>
+</html>
