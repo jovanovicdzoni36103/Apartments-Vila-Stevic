@@ -1,589 +1,72 @@
 <!doctype html>
 <html lang="sr">
   <head>
-    <!--
-  VILA & SPA STEVIĆ, Srebrno jezero. Statični sajt: 8 stranica, bez build koraka i bez biblioteka.
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>SPA centar | Vila &amp; SPA Stević</title>
+    <meta name="description" content="SPA centar Vile &amp; SPA Stević: slana soba, finska sauna, đakuzi i masaža, svakog dana od 12:00 do 21:00.">
+    <meta name="theme-color" content="#1c2625">
+    <link rel="canonical" href="https://vilastevic.com/spa.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="sr_RS">
+    <meta property="og:site_name" content="Vila &amp; SPA Stević">
+    <meta property="og:url" content="https://vilastevic.com/spa.html">
+    <meta property="og:title" content="SPA centar | Vila &amp; SPA Stević">
+    <meta property="og:description" content="SPA centar Vile &amp; SPA Stević: slana soba, finska sauna, đakuzi i masaža, svakog dana od 12:00 do 21:00.">
+    <meta property="og:image" content="https://vilastevic.com/slike/og-vila-stevic.jpg">
+    <meta property="og:image:alt" content="Vila &amp; SPA Stević na Srebrnom jezeru">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SPA centar | Vila &amp; SPA Stević">
+    <meta name="twitter:description" content="SPA centar Vile &amp; SPA Stević: slana soba, finska sauna, đakuzi i masaža, svakog dana od 12:00 do 21:00.">
+    <meta name="twitter:image" content="https://vilastevic.com/slike/og-vila-stevic.jpg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="stylesheet" href="css/stil.css">
 
-  FAJLOVI
-  index.html, smestaj.html, spa.html, galerija.html, vauceri.html, o-nama.html, kucni-red.html, kontakt.html
-  css/stil.css    stilovi (boje, razmaci i fontovi su u :root)
-  js/skripta.js   traka za termin, Booking deep link, prenos termina između stranica, forme, animacije, lightbox
-  slike/          fotografije vlasnika (07.09.2026), smanjene na 1600 px, bez EXIF podataka; dron snimci su sa starog sajta
-  Navigacija i podnožje su isti na svim stranicama; menjaju se u svakom fajlu.
-
-  OZNAKE NA STRANICAMA
-  žuto (.tbd)                 podatak koji vlasnik treba da potvrdi
-  isprekidani okvir           mesto za tekst ili fotografiju koje vlasnik popunjava (.mesto-za-tekst, figure.prazno)
-
-  SLIKE se menjaju na JEDNOM mestu: objekat SLIKE na vrhu js/skripta.js. Jedna slika = jedna vrednost.
-  FORME nemaju backend: mailto i WhatsApp sa popunjenom porukom. Endpoint ide u const FORM_ENDPOINT u js/skripta.js.
-  og:image mora biti puna adresa (https://domen/slike/vila-dan.jpg) kad sajt dobije domen.
--->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover"
-    />
-    <title>SPA centar | Vila &amp; SPA Stević, Srebrno jezero</title>
-    <meta
-      name="description"
-      content="SPA centar Vile Stević na Srebrnom jezeru: slana soba, finska sauna, đakuzi i masaža. Radno vreme 12 do 21h, termini se zakazuju na recepciji."
-    />
-    <meta name="theme-color" content="#ffffff" />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="sr_RS" />
-    <meta
-      property="og:title"
-      content="SPA centar | Vila &amp; SPA Stević, Srebrno jezero"
-    />
-    <meta
-      property="og:description"
-      content="SPA centar Vile Stević na Srebrnom jezeru: slana soba, finska sauna, đakuzi i masaža. Radno vreme 12 do 21h, termini se zakazuju na recepciji."
-    />
-    <meta
-      property="og:image"
-      content="https://vilastevic.com/slike/og-vila-stevic.jpg"
-    />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta
-      property="og:image:alt"
-      content="Vila &amp; SPA Stević, ulaz i dvorište"
-    />
-    <link rel="canonical" href="https://vilastevic.com/spa.html" />
-    <link rel="icon" href="favicon.ico" sizes="any" />
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-    <link rel="manifest" href="site.webmanifest" />
-    <meta property="og:url" content="https://vilastevic.com/spa.html" />
-    <meta property="og:site_name" content="Vila &amp; SPA Stević" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="SPA centar | Vila &amp; SPA Stević, Srebrno jezero"
-    />
-    <meta
-      name="twitter:description"
-      content="SPA centar Vile Stević na Srebrnom jezeru: slana soba, finska sauna, đakuzi i masaža. Radno vreme 12 do 21h, termini se zakazuju na recepciji."
-    />
-    <meta
-      name="twitter:image"
-      content="https://vilastevic.com/slike/og-vila-stevic.jpg"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-    />
-    <link rel="stylesheet" href="css/stil.css" />
   </head>
   <body>
-    <a class="preskoci" href="#glavno">Pređi na sadržaj</a>
-
-    <header class="nav">
-      <div class="nav__unutra">
-        <a class="nav__ime" href="index.html">Vila &amp; SPA Stević</a>
-        <nav aria-label="Glavna navigacija">
-          <ul class="nav__linkovi">
-            <li><a href="smestaj.html">Smeštaj</a></li>
-            <li><a href="spa.html" aria-current="page">SPA</a></li>
-            <li><a href="galerija.html">Galerija</a></li>
-            <li><a href="vauceri.html">Vaučeri</a></li>
-            <li><a href="o-nama.html">O nama</a></li>
-            <li><a href="kontakt.html">Kontakt</a></li>
-          </ul>
-        </nav>
-        <a
-          class="dugme dugme--primarno dugme--malo nav__cta"
-          href="index.html#termin"
-          data-cta="nav-termin"
-          >Proveri termin</a
-        >
-        <button
-          class="nav__hamburger"
-          type="button"
-          aria-expanded="false"
-          aria-controls="meni"
-          aria-label="Otvori meni"
-        >
-          <span></span>
-        </button>
-      </div>
-    </header>
-
-    <div class="meni" id="meni">
-      <a href="index.html">Početna</a><a href="smestaj.html">Smeštaj</a
-      ><a href="spa.html" aria-current="page">SPA</a
-      ><a href="galerija.html">Galerija</a><a href="vauceri.html">Vaučeri</a
-      ><a href="o-nama.html">O nama</a><a href="kucni-red.html">Kućni red</a
-      ><a href="kontakt.html">Kontakt</a>
-      <a
-        class="dugme dugme--primarno"
-        href="index.html#termin"
-        data-cta="meni-termin"
-        >Proveri termin</a
-      >
-      <p class="meni__kontakt">
-        Jezerska bb, Beli Bagrem, Srebrno jezero<br /><a
-          href="tel:+381644500600"
-          >064/4500-600</a
-        >
-        · <a href="mailto:vilastevic@gmail.com">vilastevic@gmail.com</a>
-      </p>
+  <a class="skip-link" href="#main-content">Pređi na sadržaj</a>
+  <div class="topline">Srebrno jezero · 100 m od jezera · od 2002.</div>
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">VS</span>Vila &amp; SPA Stević</a>
+      <nav aria-label="Glavna navigacija">
+        <ul class="nav-links"><li><a href="index.html">Početna</a></li><li><a href="smestaj.html">Smeštaj</a></li><li><a href="spa.html" aria-current="page">SPA</a></li><li><a href="galerija.html">Galerija</a></li><li><a href="vauceri.html">Vaučeri</a></li><li><a href="o-nama.html">O nama</a></li><li><a href="kontakt.html">Kontakt</a></li></ul>
+      </nav>
+      <a class="nav-cta" href="index.html#termin">Proveri termin</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Otvori meni"><span></span></button>
     </div>
+  </header>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobilna navigacija">
+    <a href="index.html">Početna</a><a href="smestaj.html">Smeštaj</a><a href="spa.html" aria-current="page">SPA</a><a href="galerija.html">Galerija</a><a href="vauceri.html">Vaučeri</a><a href="o-nama.html">O nama</a><a href="kucni-red.html">Kućni red</a><a href="kontakt.html">Kontakt</a>
+    <a class="button" href="index.html#termin">Proveri termin</a>
+  </nav>
+  <main id="main-content">
 
-    <main id="glavno">
-      <header class="zaglavlje zaglavlje--tamno">
-        <div class="kontejner">
-          <div class="sekcija__uvod" data-stagger>
-            <h1 class="naslov anim">Jedini SPA na jezeru.</h1>
-            <p class="podnaslov anim">
-              Poklonite sebi trenutak mira, opuštanja i potpunog uživanja.
-            </p>
-          </div>
+    <section class="page-hero"><div class="container"><div><p class="eyebrow">Vila &amp; SPA Stević</p><h1>Trenutak za usporavanje.</h1></div><p>Na raspolaganju su slana soba, finska sauna, đakuzi i masaža. SPA radi od 12:00 do 21:00.</p></div></section>
+    <section class="section"><div class="container"><div class="hours reveal"><strong>SPA centar</strong><span>12:00–21:00</span><span>Termini se dogovaraju na recepciji.</span></div><div class="spa-grid">
+      <article class="spa-card reveal"><img src="slike/spa-7.jpg" alt="Slana soba u SPA centru" loading="lazy"><div class="spa-card-content"><h2>Slana soba</h2><p>Mir i vreme za predah.</p></div></article>
+      <article class="spa-card reveal"><img src="slike/spa-9.jpg" alt="Finska sauna u SPA centru" loading="lazy"><div class="spa-card-content"><h2>Finska sauna</h2><p>Toplota i opuštanje.</p></div></article>
+      <article class="spa-card reveal"><img src="slike/spa-4.jpg" alt="Đakuzi u SPA centru" loading="lazy"><div class="spa-card-content"><h2>Đakuzi</h2><p>Trenutak bez žurbe.</p></div></article>
+      <article class="spa-card reveal"><img src="slike/spa-8.jpg" alt="Masaža u SPA centru" loading="lazy"><div class="spa-card-content"><h2>Masaža</h2><p>Termin dogovarate na recepciji.</p></div></article>
+    </div></div></section>
+    <section class="section section--dark"><div class="container intro-grid reveal"><div><p class="eyebrow">Planirajte posetu</p><h2>Rezervišite svoj termin na recepciji.</h2></div><div class="prose"><p>Za informacije i dogovor o terminu obratite se recepciji tokom boravka. Za smeštaj proverite dostupnost na Booking-u.</p><a class="button" href="kontakt.html">Kontakt</a></div></div></section>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">VS</span>Vila &amp; SPA Stević</a>
+          <p class="muted">Porodični odmor na Srebrnom jezeru od 2002. godine.</p>
         </div>
-      </header>
-
-      <section class="sekcija sekcija--tamna" style="padding-top: 0">
-        <div class="kontejner">
-          <div class="proza anim" style="margin-bottom: 64px">
-            <p>
-              Prepustite se trenutku potpunog opuštanja u našem SPA centru, uz
-              pažljivo odabrane sadržaje koji stvaraju ambijent za odmor i
-              uživanje. Bilo da želite da se opustite nakon dana provedenog u
-              prirodi, oslobodite napetosti ili jednostavno poklonite sebi
-              vreme, naš SPA je tu da svaki trenutak učini posebnim.
-            </p>
-          </div>
-        </div>
-        <div class="kontejner kontejner--sirok">
-          <article class="spa-blok">
-            <figure class="anim" data-svetlo="spa-sadrzaji">
-              <img
-                data-slika="spa7"
-                alt="SPA centar, slana soba"
-                loading="lazy"
-                decoding="async"
-                width="1280"
-                height="960"
-                src="slike/spa-7.jpg"
-              />
-            </figure>
-            <div data-stagger>
-              <h2 class="anim">Slana soba</h2>
-              <p class="anim">
-                Tiho, toplo i sporo. Sedite, dišete i ne radite ništa.
-              </p>
-            </div>
-          </article>
-          <article class="spa-blok spa-blok--obrnuto">
-            <figure class="anim" data-svetlo="spa-sadrzaji">
-              <img
-                data-slika="spa9"
-                alt="SPA centar, finska sauna"
-                loading="lazy"
-                decoding="async"
-                width="1600"
-                height="1062"
-                src="slike/spa-9.jpg"
-              />
-            </figure>
-            <div data-stagger>
-              <h2 class="anim">Finska sauna</h2>
-              <p class="anim">
-                Toplota koja zagreva do kosti. Posle nje prija vazduh sa jezera.
-              </p>
-            </div>
-          </article>
-          <article class="spa-blok">
-            <figure class="anim" data-svetlo="spa-sadrzaji">
-              <img
-                data-slika="spa4"
-                alt="SPA centar, đakuzi sa plavim osvetljenjem"
-                loading="lazy"
-                decoding="async"
-                width="1600"
-                height="1200"
-                src="slike/spa-4.jpg"
-              />
-            </figure>
-            <div data-stagger>
-              <h2 class="anim">Đakuzi</h2>
-              <p class="anim">
-                Topla voda opušta ramena. Svetlo je prigušeno, voda je topla.
-              </p>
-            </div>
-          </article>
-          <article class="spa-blok spa-blok--obrnuto">
-            <figure class="anim" data-svetlo="spa-sadrzaji">
-              <img
-                data-slika="spa8"
-                alt="SPA centar, masaža"
-                loading="lazy"
-                decoding="async"
-                width="1600"
-                height="1200"
-                src="slike/spa-8.jpg"
-              />
-            </figure>
-            <div data-stagger>
-              <h2 class="anim">Masaža</h2>
-              <p class="anim">Za kraj dana. Tiho, toplo i bez žurbe.</p>
-            </div>
-          </article>
-        </div>
-        <div class="kontejner" style="margin-top: 64px">
-          <div class="proza anim">
-            <p class="potpis">
-              Vila &amp; SPA Stević, više od odmora. Trenutak koji ćete poželeti
-              da ponovite.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="sekcija" id="ambijent">
-        <div class="kontejner kontejner--sirok">
-          <div class="sekcija__uvod" data-stagger>
-            <h2 class="naslov anim">Ambijent.</h2>
-            <p class="podnaslov anim">Recepcija, ulaz i kutak za odmor.</p>
-          </div>
-          <div class="jedinica__foto anim">
-            <div class="mozaik">
-              <figure data-svetlo="spa-ambijent">
-                <img
-                  data-slika="spa1"
-                  alt="SPA centar, recepcija"
-                  loading="lazy"
-                  decoding="async"
-                  width="1600"
-                  height="1200"
-                  src="slike/spa-1.jpg"
-                />
-              </figure>
-              <figure data-svetlo="spa-ambijent">
-                <img
-                  data-slika="spa2"
-                  alt="SPA centar, ulaz sa drvenom oblogom"
-                  loading="lazy"
-                  decoding="async"
-                  width="944"
-                  height="708"
-                  src="slike/spa-2.jpg"
-                />
-              </figure>
-              <figure data-svetlo="spa-ambijent">
-                <img
-                  data-slika="spa3"
-                  alt="SPA centar, polica sa preparatima"
-                  loading="lazy"
-                  decoding="async"
-                  width="1600"
-                  height="1200"
-                  src="slike/spa-3.jpg"
-                />
-              </figure>
-              <figure data-svetlo="spa-ambijent">
-                <img
-                  data-slika="spa5"
-                  alt="SPA centar, kutak za odmor"
-                  loading="lazy"
-                  decoding="async"
-                  width="960"
-                  height="638"
-                  src="slike/spa-5.jpg"
-                />
-              </figure>
-              <figure data-svetlo="spa-ambijent">
-                <img
-                  data-slika="spa6"
-                  alt="SPA centar, đakuzi odozgo"
-                  loading="lazy"
-                  decoding="async"
-                  width="1600"
-                  height="1062"
-                  src="slike/spa-6.jpg"
-                />
-              </figure>
-            </div>
-            <p class="mozaik__nagovestaj">
-              Prevucite za još fotografija. Dodir otvara veliku sliku.
-            </p>
-            <a
-              class="link"
-              href="galerija.html#spa"
-              data-cta="spa-ambijent-galerija"
-              >Sve fotografije (5)</a
-            >
-          </div>
-        </div>
-      </section>
-
-      <section class="sekcija sekcija--siva" id="zakazivanje">
-        <div class="kontejner">
-          <div class="sekcija__uvod" data-stagger>
-            <h2 class="naslov anim">Kako se zakazuje.</h2>
-            <p class="podnaslov anim">
-              Termini se zakazuju na recepciji. Na sajtu nema zakazivanja.
-            </p>
-          </div>
-          <ul class="istaknuto" data-stagger>
-            <li class="anim">
-              <strong>12 do 21h</strong><span>Radno vreme</span>
-            </li>
-            <li class="anim">
-              <strong>Recepcija</strong
-              ><span>Termin dogovarate po prijavi</span>
-            </li>
-            <li class="anim">
-              <strong
-                ><span class="tbd" data-podatak="spaSpoljniGosti"
-                  >[potvrditi: da li SPA mogu koristiti gosti koji ne noće u
-                  vili]</span
-                ></strong
-              ><span>Gosti koji ne noće u vili</span>
-            </li>
-            <li class="anim">
-              <strong
-                ><span class="tbd" data-podatak="spaTermin"
-                  >[potvrditi: trajanje termina, broj osoba i paketi, npr. SPA
-                  dan za dvoje]</span
-                ></strong
-              ><span>Termini i paketi</span>
-            </li>
-          </ul>
-          <p class="smestaj__napomena anim">
-            <a
-              class="link js-wa"
-              href="https://wa.me/381644500600"
-              target="_blank"
-              rel="noopener"
-              data-tema="spa"
-              data-cta="spa-whatsapp"
-              >Pitaj o SPA na WhatsApp</a
-            >
-          </p>
-        </div>
-      </section>
-
-      <section class="cta-kraj" aria-labelledby="cta-naslov">
-        <img
-          data-slika="spa6"
-          alt="SPA centar, đakuzi odozgo"
-          loading="lazy"
-          decoding="async"
-          width="1600"
-          height="1062"
-          src="slike/spa-6.jpg"
-        />
-        <div class="cta-kraj__veo"></div>
-        <div class="cta-kraj__sadrzaj" data-stagger>
-          <h2 class="naslov anim" id="cta-naslov">
-            Pogledajte cenu za svoj termin.
-          </h2>
-          <p class="podnaslov anim">
-            Cena i slobodni dani su na Booking-u. Za sve ostalo pozovite.
-          </p>
-          <div class="cta-kraj__dugmad anim">
-            <a
-              class="dugme dugme--primarno js-booking"
-              href="https://www.booking.com/hotel/rs/vila-stevia.html"
-              target="_blank"
-              rel="noopener"
-              data-cta="spa-kraj-booking"
-              >Vidi cenu na Booking-u</a
-            >
-            <a
-              class="dugme dugme--belo"
-              href="tel:+381644500600"
-              data-cta="spa-kraj-poziv"
-              >Pozovi 064 4500 600</a
-            >
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="podnozje">
-      <div class="kontejner kontejner--sirok">
-        <div class="podnozje__mreza">
-          <div>
-            <p class="podnozje__ime">Vila &amp; SPA Stević</p>
-            <address>
-              Jezerska bb, Beli Bagrem<br />Srebrno jezero, Veliko Gradište
-            </address>
-            <p class="podnozje__stranica" style="margin-top: 8px">
-              Od 2002. na Srebrnom jezeru.
-            </p>
-          </div>
-          <div>
-            <p class="podnozje__ime">Stranice</p>
-            <ul class="podnozje__linkovi">
-              <li><a href="index.html">Početna</a></li>
-              <li><a href="smestaj.html">Smeštaj</a></li>
-              <li><a href="spa.html">SPA</a></li>
-              <li><a href="galerija.html">Galerija</a></li>
-              <li><a href="vauceri.html">Vaučeri</a></li>
-              <li><a href="o-nama.html">O nama</a></li>
-              <li><a href="kucni-red.html">Kućni red</a></li>
-              <li><a href="kontakt.html">Kontakt</a></li>
-            </ul>
-          </div>
-          <div>
-            <p class="podnozje__ime">Kontakt</p>
-            <p>
-              <a href="tel:+381644500600" data-cta="podnozje-poziv"
-                >064/4500-600</a
-              ><br /><a
-                href="mailto:vilastevic@gmail.com"
-                data-cta="podnozje-mejl-tekst"
-                >vilastevic@gmail.com</a
-              >
-            </p>
-            <div class="podnozje__ikone" style="margin-top: 12px">
-              <a
-                class="js-wa"
-                href="https://wa.me/381644500600"
-                target="_blank"
-                rel="noopener"
-                aria-label="WhatsApp"
-                title="WhatsApp"
-                data-cta="podnozje-whatsapp"
-                ><svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-5A8 8 0 1 1 21 12z"
-                  /></svg
-              ></a>
-              <a
-                href="viber://chat?number=%2B381644500600"
-                aria-label="Viber"
-                title="Viber"
-                data-cta="podnozje-viber"
-                ><svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-5A8 8 0 1 1 21 12z"
-                  />
-                  <path d="M8.5 12h.01M12 12h.01M15.5 12h.01" /></svg
-              ></a>
-              <a
-                href="mailto:vilastevic@gmail.com"
-                aria-label="Mejl"
-                title="Mejl"
-                data-cta="podnozje-mejl"
-                ><svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <rect x="3" y="5" width="18" height="14" rx="2" />
-                  <path d="m3 7 9 6 9-6" /></svg
-              ></a>
-            </div>
-          </div>
-        </div>
-        <div class="podnozje__dno">
-          <p>
-            <a href="kucni-red.html">Kućni red</a> ·
-            <a href="kontakt.html">Kontakt</a>
-          </p>
-          <p>© <span id="godina">2026</span> Vila &amp; SPA Stević</p>
-        </div>
+        <div><p class="footer-title">Stranice</p><nav class="footer-links" aria-label="Podnožje"><a href="index.html">Početna</a><a href="smestaj.html">Smeštaj</a><a href="spa.html">SPA</a><a href="galerija.html">Galerija</a><a href="vauceri.html">Vaučeri</a><a href="o-nama.html">O nama</a><a href="kucni-red.html">Kućni red</a><a href="kontakt.html">Kontakt</a></nav></div>
+        <div><p class="footer-title">Kontakt</p><div class="footer-links"><a href="tel:+381644500600">+381 64 4500 600</a><a href="mailto:vilastevic@gmail.com">vilastevic@gmail.com</a></div></div>
+        <div><p class="footer-title">Lokacija</p><address>Jezerska bb, Beli Bagrem<br>Srebrno jezero, Veliko Gradište</address><div class="footer-links"><a href="https://www.booking.com/hotel/rs/vila-stevia.html" target="_blank" rel="noopener">Booking.com</a></div></div>
       </div>
-    </footer>
-
-    <nav class="mobilna" aria-label="Brze akcije">
-      <a href="tel:+381644500600" data-cta="mobilna-poziv"
-        ><svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.8"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <path
-            d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"
-          /></svg
-        >Pozovi</a
-      >
-      <a
-        class="js-wa"
-        href="https://wa.me/381644500600"
-        target="_blank"
-        rel="noopener"
-        data-cta="mobilna-whatsapp"
-        ><svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.8"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-5A8 8 0 1 1 21 12z" /></svg
-        >WhatsApp</a
-      >
-      <a
-        class="mobilna__booking js-booking"
-        href="https://www.booking.com/hotel/rs/vila-stevia.html"
-        target="_blank"
-        rel="noopener"
-        data-cta="mobilna-booking"
-        >Booking</a
-      >
-    </nav>
-
-    <dialog class="svetlo" id="svetlo" aria-label="Fotografija">
-      <button class="svetlo__zatvori" type="button" aria-label="Zatvori">
-        ×
-      </button>
-      <button
-        class="svetlo__pre"
-        type="button"
-        aria-label="Prethodna fotografija"
-      >
-        ‹
-      </button>
-      <figure>
-        <img
-          src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-          alt=""
-        />
-        <figcaption></figcaption>
-      </figure>
-      <button
-        class="svetlo__sledeca"
-        type="button"
-        aria-label="Sledeća fotografija"
-      >
-        ›
-      </button>
-    </dialog>
-
-    <!-- FORME: pravi endpoint (Formspree ili Web3Forms) se upisuje u const FORM_ENDPOINT na vrhu js/skripta.js. Jedna linija. -->
-    <script src="js/skripta.js"></script>
-  </body>
+      <div class="footer-bottom"><span>© Vila &amp; SPA Stević</span><span>Prijava 14:00 · odjava 10:00</span></div>
+    </div>
+  </footer>
+  <script src="js/skripta.js"></script>
+</body>
 </html>
