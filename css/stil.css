@@ -142,7 +142,6 @@ address {
 }
 .tbd {
   display: inline;
-  background: #ffe45c;
   color: #1d1d1f;
   padding: 2px 8px;
   border-radius: 6px;
@@ -1297,9 +1296,13 @@ address {
   margin: 0 auto;
   border-top: 1px solid var(--linija);
 }
+
 .faq details {
   border-bottom: 1px solid var(--linija);
+  /* Omogućava glatko otvaranje visine u modernim pregledačima */
+  transition: background-color 0.3s var(--ease);
 }
+
 .faq summary {
   list-style: none;
   cursor: pointer;
@@ -1312,10 +1315,24 @@ address {
   font-weight: 500;
   letter-spacing: -0.01em;
   line-height: 1.3;
+
+  /* DODATO: Animacija za hover i tranzicije */
+  transition:
+    padding 0.3s var(--ease),
+    color 0.3s var(--ease);
+  user-select: none;
 }
+
 .faq summary::-webkit-details-marker {
   display: none;
 }
+
+/* DODATO: Hover efekat na pitanje (suptilno pomeranje udesno) */
+.faq summary:hover {
+  padding-left: 8px;
+  color: var(--tekst-1, #000);
+}
+
 .faq summary::after {
   content: "+";
   flex-shrink: 0;
@@ -1327,18 +1344,66 @@ address {
   font-size: 26px;
   font-weight: 300;
   color: var(--tekst-2);
-  transition: transform 0.3s var(--ease);
+  /* Unapređena tranzicija sa blagim bounce efektom */
+  transition:
+    transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    color 0.3s var(--ease);
 }
+
+.faq summary:hover::after {
+  transform: scale(1.15);
+  color: var(--tekst-1, #000);
+}
+
 .faq details[open] summary::after {
   transform: rotate(45deg);
 }
+
 .faq summary:focus-visible {
   outline-offset: -2px;
   border-radius: 8px;
 }
+
+/* --- ANIMACIJA ODGOVORA (TEKSTA) --- */
 .faq__odgovor {
   padding: 0 var(--s12) var(--s6) 0;
   color: var(--tekst-2);
+
+  /* Početno stanje (skriveno) */
+  opacity: 0;
+  transform: translateY(-10px);
+  transition:
+    opacity 0.35s var(--ease),
+    transform 0.35s var(--ease);
+}
+
+/* Stanje kada je otvoren FAQ */
+.faq details[open] .faq__odgovor {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- DODATAK ZA NAJNOVIJE PREGLEDAČE (Glatko širenje visine) --- */
+@supports (interpolate-size: allow-keywords) {
+  :root {
+    interpolate-size: allow-keywords;
+  }
+
+  .faq details::details-content {
+    opacity: 0;
+    block-size: 0;
+    overflow-y: hidden;
+    transition:
+      content-visibility 0.35s ease,
+      block-size 0.35s var(--ease),
+      opacity 0.35s ease;
+    transition-behavior: allow-discrete;
+  }
+
+  .faq details[open]::details-content {
+    opacity: 1;
+    block-size: auto;
+  }
 }
 
 /* ==========================================================================
