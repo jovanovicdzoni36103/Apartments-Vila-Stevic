@@ -33,55 +33,130 @@
   const q = (s, r) => (r || document).querySelector(s);
   const qa = (s, r) => Array.from((r || document).querySelectorAll(s));
   const PASIVNO = { passive: true };
-  const tihoKretanje = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const tihoKretanje = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
 
   /* ------------------------------------------------------------------------
      2. DATUMI I STANJE
      ------------------------------------------------------------------------ */
-  const MESECI = ["januar","februar","mart","april","maj","jun","jul","avgust","septembar","oktobar","novembar","decembar"];
-  const MESECI_KRATKO = ["jan","feb","mar","apr","maj","jun","jul","avg","sep","okt","nov","dec"];
-  const DANI = ["pon","uto","sre","čet","pet","sub","ned"];
+  const MESECI = [
+    "januar",
+    "februar",
+    "mart",
+    "april",
+    "maj",
+    "jun",
+    "jul",
+    "avgust",
+    "septembar",
+    "oktobar",
+    "novembar",
+    "decembar",
+  ];
+  const MESECI_KRATKO = [
+    "jan",
+    "feb",
+    "mar",
+    "apr",
+    "maj",
+    "jun",
+    "jul",
+    "avg",
+    "sep",
+    "okt",
+    "nov",
+    "dec",
+  ];
+  const DANI = ["pon", "uto", "sre", "čet", "pet", "sub", "ned"];
 
   const dva = (n) => String(n).padStart(2, "0");
-  const iso = (d) => d.getFullYear() + "-" + dva(d.getMonth() + 1) + "-" + dva(d.getDate());
-  const odIso = (s) => { const [g, m, d] = s.split("-").map(Number); return new Date(g, m - 1, d); };
-  const danas = () => { const d = new Date(); d.setHours(0, 0, 0, 0); return d; };
-  const plusDana = (s, n) => { const d = odIso(s); d.setDate(d.getDate() + n); return iso(d); };
+  const iso = (d) =>
+    d.getFullYear() + "-" + dva(d.getMonth() + 1) + "-" + dva(d.getDate());
+  const odIso = (s) => {
+    const [g, m, d] = s.split("-").map(Number);
+    return new Date(g, m - 1, d);
+  };
+  const danas = () => {
+    const d = new Date();
+    d.setHours(0, 0, 0, 0);
+    return d;
+  };
+  const plusDana = (s, n) => {
+    const d = odIso(s);
+    d.setDate(d.getDate() + n);
+    return iso(d);
+  };
   const jeDatum = (v) => /^\d{4}-\d{2}-\d{2}$/.test(v || "");
-  const uOpsegu = (v, min, max) => { const n = parseInt(v, 10); return Number.isFinite(n) ? Math.min(max, Math.max(min, n)) : min; };
-  const lepDatum = (s) => { const d = odIso(s); return d.getDate() + ". " + MESECI[d.getMonth()] + " " + d.getFullYear() + "."; };
-  const kratakDatum = (s) => { const d = odIso(s); return d.getDate() + ". " + MESECI_KRATKO[d.getMonth()]; };
+  const uOpsegu = (v, min, max) => {
+    const n = parseInt(v, 10);
+    return Number.isFinite(n) ? Math.min(max, Math.max(min, n)) : min;
+  };
+  const lepDatum = (s) => {
+    const d = odIso(s);
+    return (
+      d.getDate() + ". " + MESECI[d.getMonth()] + " " + d.getFullYear() + "."
+    );
+  };
+  const kratakDatum = (s) => {
+    const d = odIso(s);
+    return d.getDate() + ". " + MESECI_KRATKO[d.getMonth()];
+  };
   const noci = (a, b) => Math.round((odIso(b) - odIso(a)) / 86400000);
   const mnozina = (n, j, d, p) => {
-    const z = n % 10, s = n % 100;
-    return n + " " + (z === 1 && s !== 11 ? j : z >= 2 && z <= 4 && (s < 10 || s >= 20) ? d : p);
+    const z = n % 10,
+      s = n % 100;
+    return (
+      n +
+      " " +
+      (z === 1 && s !== 11
+        ? j
+        : z >= 2 && z <= 4 && (s < 10 || s >= 20)
+          ? d
+          : p)
+    );
   };
 
   const stanje = (() => {
     const p = new URLSearchParams(window.location.search);
     const dolazak = jeDatum(p.get("dolazak")) ? p.get("dolazak") : "";
     let odlazak = jeDatum(p.get("odlazak")) ? p.get("odlazak") : "";
-    if (dolazak && (!odlazak || odlazak <= dolazak)) odlazak = plusDana(dolazak, 1);
+    if (dolazak && (!odlazak || odlazak <= dolazak))
+      odlazak = plusDana(dolazak, 1);
     if (!dolazak) odlazak = "";
     const deca = uOpsegu(p.get("deca") || 0, 0, 10);
     return {
-      dolazak, odlazak,
+      dolazak,
+      odlazak,
       odrasli: uOpsegu(p.get("odrasli") || 2, 1, 20),
       deca,
-      godine: (p.get("g") || "").split(",").filter((x) => x !== "").slice(0, deca).map((x) => String(uOpsegu(x, 0, 17))),
+      godine: (p.get("g") || "")
+        .split(",")
+        .filter((x) => x !== "")
+        .slice(0, deca)
+        .map((x) => String(uOpsegu(x, 0, 17))),
     };
   })();
 
   const imaTermin = () => Boolean(stanje.dolazak && stanje.odlazak);
-  const terminTekst = () => (imaTermin() ? lepDatum(stanje.dolazak) + " do " + lepDatum(stanje.odlazak) : "");
-  const terminKratko = () => (imaTermin() ? kratakDatum(stanje.dolazak) + " do " + kratakDatum(stanje.odlazak) : "");
+  const terminTekst = () =>
+    imaTermin()
+      ? lepDatum(stanje.dolazak) + " do " + lepDatum(stanje.odlazak)
+      : "";
+  const terminKratko = () =>
+    imaTermin()
+      ? kratakDatum(stanje.dolazak) + " do " + kratakDatum(stanje.odlazak)
+      : "";
   const gostiTekst = () =>
     mnozina(stanje.odrasli, "odrasla osoba", "odrasle osobe", "odraslih") +
     (stanje.deca ? " i " + mnozina(stanje.deca, "dete", "deteta", "dece") : "");
 
   function upit() {
     const p = new URLSearchParams();
-    if (imaTermin()) { p.set("dolazak", stanje.dolazak); p.set("odlazak", stanje.odlazak); }
+    if (imaTermin()) {
+      p.set("dolazak", stanje.dolazak);
+      p.set("odlazak", stanje.odlazak);
+    }
     if (stanje.odrasli !== 2) p.set("odrasli", String(stanje.odrasli));
     if (stanje.deca) {
       p.set("deca", String(stanje.deca));
@@ -101,31 +176,54 @@
     u.searchParams.set("checkout", stanje.odlazak);
     u.searchParams.set("group_adults", String(stanje.odrasli));
     u.searchParams.set("group_children", String(stanje.deca));
-    for (let i = 0; i < stanje.deca; i++) u.searchParams.append("age", stanje.godine[i] || "0");
+    for (let i = 0; i < stanje.deca; i++)
+      u.searchParams.append("age", stanje.godine[i] || "0");
     u.searchParams.set("no_rooms", String(sobe || 1));
     u.searchParams.set("selected_currency", "EUR");
     return u.toString();
   }
-  const waUrl = (t) => "https://wa.me/" + KONTAKT.wa + "?text=" + encodeURIComponent(t);
+  const waUrl = (t) =>
+    "https://wa.me/" + KONTAKT.wa + "?text=" + encodeURIComponent(t);
   const viberUrl = "viber://chat?number=%2B" + KONTAKT.wa;
 
   function porukaWa(jedinica, tema) {
-    const zaTermin = imaTermin() ? " za termin " + terminTekst() + " (" + gostiTekst() + ")" : "";
-    if (tema === "spa") return "Zdravo! Zanima me SPA centar u Vili Stević." + (imaTermin() ? " Dolazimo " + terminTekst() + "." : "");
-    if (tema === "vaucer") return "Zdravo! Zanima me poklon vaučer za Vilu Stević.";
-    if (jedinica) return "Zdravo! Zanima me " + jedinica + " u Vili Stević" + zaTermin + ". Da li je slobodno?";
+    const zaTermin = imaTermin()
+      ? " za termin " + terminTekst() + " (" + gostiTekst() + ")"
+      : "";
+    if (tema === "spa")
+      return (
+        "Zdravo! Zanima me SPA centar u Vili Stević." +
+        (imaTermin() ? " Dolazimo " + terminTekst() + "." : "")
+      );
+    if (tema === "vaucer")
+      return "Zdravo! Zanima me poklon vaučer za Vilu Stević.";
+    if (jedinica)
+      return (
+        "Zdravo! Zanima me " +
+        jedinica +
+        " u Vili Stević" +
+        zaTermin +
+        ". Da li je slobodno?"
+      );
     return "Zdravo! Zanima me smeštaj u Vili Stević" + zaTermin + ".";
   }
 
   /* Interni linkovi nose termin dalje kroz sajt. */
-  const interni = qa('a[href]').filter((a) => /^[a-z0-9-]+\.html(#[a-z0-9-]*)?$/i.test(a.getAttribute("href")));
-  interni.forEach((a) => { a.dataset.osnova = a.getAttribute("href"); });
+  const interni = qa("a[href]").filter((a) =>
+    /^[a-z0-9-]+\.html(#[a-z0-9-]*)?$/i.test(a.getAttribute("href")),
+  );
+  interni.forEach((a) => {
+    a.dataset.osnova = a.getAttribute("href");
+  });
 
   function osveziLinkove() {
     const u = upit();
     interni.forEach((a) => {
       const [strana, sidro] = a.dataset.osnova.split("#");
-      a.setAttribute("href", strana + (u ? "?" + u : "") + (sidro !== undefined ? "#" + sidro : ""));
+      a.setAttribute(
+        "href",
+        strana + (u ? "?" + u : "") + (sidro !== undefined ? "#" + sidro : ""),
+      );
     });
     qa("[data-booking]").forEach((a) => {
       a.setAttribute("href", bookingUrl(a.dataset.booking || 1));
@@ -140,17 +238,29 @@
     qa("[data-viber]").forEach((a) => a.setAttribute("href", viberUrl));
     qa("[data-termin-tekst]").forEach((el) => {
       el.textContent = imaTermin()
-        ? terminKratko() + " · " + mnozina(noci(stanje.dolazak, stanje.odlazak), "noć", "noći", "noći")
+        ? terminKratko() +
+          " · " +
+          mnozina(noci(stanje.dolazak, stanje.odlazak), "noć", "noći", "noći")
         : el.dataset.terminTekst || "Izaberite termin";
     });
     qa("[data-termin-pun]").forEach((el) => {
-      el.textContent = imaTermin() ? terminTekst() + " · " + gostiTekst() : "Termin nije izabran";
+      el.textContent = imaTermin()
+        ? terminTekst() + " · " + gostiTekst()
+        : "Termin nije izabran";
     });
-    qa("[data-termin-ima]").forEach((el) => { el.hidden = !imaTermin(); });
-    qa("[data-termin-nema]").forEach((el) => { el.hidden = imaTermin(); });
+    qa("[data-termin-ima]").forEach((el) => {
+      el.hidden = !imaTermin();
+    });
+    qa("[data-termin-nema]").forEach((el) => {
+      el.hidden = imaTermin();
+    });
     /* Popuni skrivena polja u formama */
-    qa("form [name=dolazak]").forEach((el) => { if (el.type === "hidden") el.value = stanje.dolazak; });
-    qa("form [name=odlazak]").forEach((el) => { if (el.type === "hidden") el.value = stanje.odlazak; });
+    qa("form [name=dolazak]").forEach((el) => {
+      if (el.type === "hidden") el.value = stanje.dolazak;
+    });
+    qa("form [name=odlazak]").forEach((el) => {
+      if (el.type === "hidden") el.value = stanje.odlazak;
+    });
   }
 
   /* ------------------------------------------------------------------------
@@ -185,10 +295,13 @@
       const mreza = document.createElement("div");
       mreza.className = "kal__dani";
 
-      const prvi = (new Date(d.getFullYear(), d.getMonth(), 1).getDay() + 6) % 7;
+      const prvi =
+        (new Date(d.getFullYear(), d.getMonth(), 1).getDay() + 6) % 7;
       const brojDana = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
       for (let i = 0; i < prvi; i++) {
-        const p = document.createElement("div"); p.className = "kal__prazan"; mreza.append(p);
+        const p = document.createElement("div");
+        p.className = "kal__prazan";
+        mreza.append(p);
       }
       const min = iso(danas());
       for (let dan = 1; dan <= brojDana; dan++) {
@@ -201,7 +314,8 @@
         if (v < min) b.disabled = true;
         if (v === stanje.dolazak) b.dataset.pocetak = "1";
         if (v === stanje.odlazak) b.dataset.kraj = "1";
-        if (imaTermin() && v > stanje.dolazak && v < stanje.odlazak) b.dataset.uOpsegu = "1";
+        if (imaTermin() && v > stanje.dolazak && v < stanje.odlazak)
+          b.dataset.uOpsegu = "1";
         const opis = dan + ". " + MESECI[d.getMonth()] + " " + d.getFullYear();
         b.setAttribute("aria-label", opis);
         mreza.append(b);
@@ -215,13 +329,19 @@
       meseci.append(crtajMesec(0), crtajMesec(1));
       const nazad = q('[data-smer="-1"]', vrh);
       const sada = danas();
-      nazad.disabled = kursor.getFullYear() === sada.getFullYear() && kursor.getMonth() === sada.getMonth();
+      nazad.disabled =
+        kursor.getFullYear() === sada.getFullYear() &&
+        kursor.getMonth() === sada.getMonth();
     }
 
     vrh.addEventListener("click", (e) => {
       const b = e.target.closest("button[data-smer]");
       if (!b) return;
-      kursor = new Date(kursor.getFullYear(), kursor.getMonth() + Number(b.dataset.smer), 1);
+      kursor = new Date(
+        kursor.getFullYear(),
+        kursor.getMonth() + Number(b.dataset.smer),
+        1,
+      );
       crtaj();
     });
 
@@ -255,7 +375,8 @@
   const preko = nav && nav.classList.contains("nav--preko");
   if (nav) {
     const prag = () => (preko ? Math.min(window.innerHeight * 0.55, 460) : 24);
-    const proveri = () => nav.classList.toggle("nav--cvrst", window.scrollY > prag());
+    const proveri = () =>
+      nav.classList.toggle("nav--cvrst", window.scrollY > prag());
     proveri();
     window.addEventListener("scroll", proveri, PASIVNO);
     window.addEventListener("resize", proveri, PASIVNO);
@@ -269,11 +390,22 @@
       meniDugme.setAttribute("aria-expanded", String(otvoren));
       document.body.style.overflow = otvoren ? "hidden" : "";
       if (otvoren && nav) nav.classList.add("nav--cvrst");
-      else if (nav && preko && window.scrollY <= Math.min(window.innerHeight * 0.55, 460)) nav.classList.remove("nav--cvrst");
+      else if (
+        nav &&
+        preko &&
+        window.scrollY <= Math.min(window.innerHeight * 0.55, 460)
+      )
+        nav.classList.remove("nav--cvrst");
     };
-    meniDugme.addEventListener("click", () => prebaci(meni.dataset.otvoren !== "1"));
-    qa("a", meni).forEach((a) => a.addEventListener("click", () => prebaci(false), PASIVNO));
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && meni.dataset.otvoren === "1") prebaci(false); });
+    meniDugme.addEventListener("click", () =>
+      prebaci(meni.dataset.otvoren !== "1"),
+    );
+    qa("a", meni).forEach((a) =>
+      a.addEventListener("click", () => prebaci(false), PASIVNO),
+    );
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && meni.dataset.otvoren === "1") prebaci(false);
+    });
   }
 
   const panel = q("#panel-termin");
@@ -290,7 +422,11 @@
     const osveziZbir = () => {
       if (!zbir) return;
       zbir.textContent = imaTermin()
-        ? terminTekst() + " · " + mnozina(noci(stanje.dolazak, stanje.odlazak), "noć", "noći", "noći") + " · " + gostiTekst()
+        ? terminTekst() +
+          " · " +
+          mnozina(noci(stanje.dolazak, stanje.odlazak), "noć", "noći", "noći") +
+          " · " +
+          gostiTekst()
         : "Izaberite datum dolaska i odlaska.";
     };
     const crtajGodine = () => {
@@ -305,31 +441,47 @@
         const w = document.createElement("label");
         w.className = "polje";
         w.innerHTML =
-          '<span class="sr">Godine ' + (i + 1) + ". deteta</span>" +
+          '<span class="sr">Godine ' +
+          (i + 1) +
+          ". deteta</span>" +
           '<input type="number" min="0" max="17" inputmode="numeric" value="' +
-          (stanje.godine[i] !== undefined ? stanje.godine[i] : "") + '" placeholder="god.">';
+          (stanje.godine[i] !== undefined ? stanje.godine[i] : "") +
+          '" placeholder="god.">';
         polja.append(w);
       }
       qa("input", polja).forEach((inp, i) =>
-        inp.addEventListener("input", () => { stanje.godine[i] = String(uOpsegu(inp.value, 0, 17)); osveziLinkove(); })
+        inp.addEventListener("input", () => {
+          stanje.godine[i] = String(uOpsegu(inp.value, 0, 17));
+          osveziLinkove();
+        }),
       );
     };
-    const sve = () => { osveziZbir(); osveziLinkove(); };
+    const sve = () => {
+      osveziZbir();
+      osveziLinkove();
+    };
 
     qa("[data-brojac]", panel).forEach((b) => {
       const inp = q("input", b);
       const kljuc = b.dataset.brojac;
-      const min = Number(b.dataset.min || 0), max = Number(b.dataset.max || 20);
+      const min = Number(b.dataset.min || 0),
+        max = Number(b.dataset.max || 20);
       const primeni = () => {
         stanje[kljuc] = uOpsegu(inp.value, min, max);
         inp.value = stanje[kljuc];
         qa("button", b)[0].disabled = stanje[kljuc] <= min;
         qa("button", b)[1].disabled = stanje[kljuc] >= max;
-        if (kljuc === "deca") { stanje.godine = stanje.godine.slice(0, stanje.deca); crtajGodine(); }
+        if (kljuc === "deca") {
+          stanje.godine = stanje.godine.slice(0, stanje.deca);
+          crtajGodine();
+        }
         sve();
       };
       qa("button", b).forEach((dug, i) =>
-        dug.addEventListener("click", () => { inp.value = Number(inp.value || 0) + (i === 0 ? -1 : 1); primeni(); })
+        dug.addEventListener("click", () => {
+          inp.value = Number(inp.value || 0) + (i === 0 ? -1 : 1);
+          primeni();
+        }),
       );
       inp.addEventListener("input", primeni);
       inp.value = stanje[kljuc];
@@ -348,10 +500,16 @@
     };
     otvoraci.forEach((o) => {
       o.setAttribute("aria-expanded", "false");
-      o.addEventListener("click", (e) => { e.preventDefault(); prebaciPanel(panel.dataset.otvoren !== "1"); });
+      o.addEventListener("click", (e) => {
+        e.preventDefault();
+        prebaciPanel(panel.dataset.otvoren !== "1");
+      });
     });
     if (zatvori) zatvori.addEventListener("click", () => prebaciPanel(false));
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && panel.dataset.otvoren === "1") prebaciPanel(false); });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && panel.dataset.otvoren === "1")
+        prebaciPanel(false);
+    });
     /* Kalendar se posle svakog klika ponovo iscrtava, pa kliknuto dugme više nije u
        dokumentu kad klik dođe do document-a. Zato se pripadnost panelu pamti na pritisak. */
     let pritisakUPanelu = false;
@@ -362,7 +520,7 @@
         pritisakUPanelu =
           panel.contains(t) || Boolean(t.closest && t.closest("[data-panel]"));
       },
-      true
+      true,
     );
     document.addEventListener("click", () => {
       if (panel.dataset.otvoren !== "1") return;
@@ -376,7 +534,10 @@
   /* ------------------------------------------------------------------------
      6. FORME
      ------------------------------------------------------------------------ */
-  const vrednost = (f, ime) => { const el = f.elements[ime]; return el ? String(el.value || "").trim() : ""; };
+  const vrednost = (f, ime) => {
+    const el = f.elements[ime];
+    return el ? String(el.value || "").trim() : "";
+  };
 
   function teloPoruke(forma) {
     const v = (i) => vrednost(forma, i);
@@ -384,15 +545,41 @@
     const redovi = [];
     let naslov;
     if (vrsta === "vaucer") {
-      naslov = "Upit za poklon vaučer" + (v("vaucer") ? ": " + v("vaucer") : "");
-      redovi.push("Upit za poklon vaučer sa sajta.", "Ime: " + v("ime"), "Telefon: " + v("telefon"), "Mejl: " + v("mejl"), "Vaučer: " + v("vaucer"));
+      naslov =
+        "Upit za poklon vaučer" + (v("vaucer") ? ": " + v("vaucer") : "");
+      redovi.push(
+        "Upit za poklon vaučer sa sajta.",
+        "Ime: " + v("ime"),
+        "Telefon: " + v("telefon"),
+        "Mejl: " + v("mejl"),
+        "Vaučer: " + v("vaucer"),
+      );
     } else {
       const termin = imaTermin() ? terminTekst() : "nije izabran";
       naslov = "Upit sa sajta" + (imaTermin() ? ": " + terminKratko() : "");
-      const godine = stanje.deca ? " (godine: " + stanje.godine.slice(0, stanje.deca).map((g) => g || "?").join(", ") + ")" : "";
-      redovi.push("Upit sa sajta.", "Ime: " + v("ime"), "Telefon: " + v("telefon"), "Mejl: " + v("mejl"),
-        "Termin: " + termin, "Gosti: " + stanje.odrasli + " odraslih, " + stanje.deca + " dece" + godine);
-      if (forma.dataset.jedinica) redovi.push("Jedinica: " + forma.dataset.jedinica);
+      const godine = stanje.deca
+        ? " (godine: " +
+          stanje.godine
+            .slice(0, stanje.deca)
+            .map((g) => g || "?")
+            .join(", ") +
+          ")"
+        : "";
+      redovi.push(
+        "Upit sa sajta.",
+        "Ime: " + v("ime"),
+        "Telefon: " + v("telefon"),
+        "Mejl: " + v("mejl"),
+        "Termin: " + termin,
+        "Gosti: " +
+          stanje.odrasli +
+          " odraslih, " +
+          stanje.deca +
+          " dece" +
+          godine,
+      );
+      if (forma.dataset.jedinica)
+        redovi.push("Jedinica: " + forma.dataset.jedinica);
     }
     if (v("poruka")) redovi.push("Poruka: " + v("poruka"));
     return { naslov, telo: redovi.join("\n") };
@@ -401,16 +588,33 @@
   function proveri(forma) {
     const v = (i) => vrednost(forma, i);
     const greske = [];
-    qa(".polje--greska", forma).forEach((el) => el.classList.remove("polje--greska"));
+    qa(".polje--greska", forma).forEach((el) =>
+      el.classList.remove("polje--greska"),
+    );
     const oznaci = (ime) => {
       const el = forma.elements[ime];
-      if (el && el.closest(".polje")) el.closest(".polje").classList.add("polje--greska");
+      if (el && el.closest(".polje"))
+        el.closest(".polje").classList.add("polje--greska");
     };
-    if (!v("ime")) { greske.push("Upišite ime."); oznaci("ime"); }
-    const tel = v("telefon"), mejl = v("mejl");
-    if (!tel && !mejl) { greske.push("Ostavite telefon ili mejl da bismo mogli da odgovorimo."); oznaci("telefon"); oznaci("mejl"); }
-    if (mejl && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mejl)) { greske.push("Mejl nije ispravan."); oznaci("mejl"); }
-    if (forma.dataset.vrsta === "vaucer" && !v("vaucer")) { greske.push("Izaberite vaučer."); oznaci("vaucer"); }
+    if (!v("ime")) {
+      greske.push("Upišite ime.");
+      oznaci("ime");
+    }
+    const tel = v("telefon"),
+      mejl = v("mejl");
+    if (!tel && !mejl) {
+      greske.push("Ostavite telefon ili mejl da bismo mogli da odgovorimo.");
+      oznaci("telefon");
+      oznaci("mejl");
+    }
+    if (mejl && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mejl)) {
+      greske.push("Mejl nije ispravan.");
+      oznaci("mejl");
+    }
+    if (forma.dataset.vrsta === "vaucer" && !v("vaucer")) {
+      greske.push("Izaberite vaučer.");
+      oznaci("vaucer");
+    }
     return greske;
   }
 
@@ -424,63 +628,111 @@
       status.classList.toggle("forma__status--uspeh", vrsta === "uspeh");
     };
     const greske = proveri(forma);
-    if (greske.length) { javi(greske[0], "greska"); return; }
+    if (greske.length) {
+      javi(greske[0], "greska");
+      return;
+    }
 
     if (kanal === "wa") {
       const p = window.open(waUrl(telo), "_blank");
-      if (p) p.opener = null; else window.location.href = waUrl(telo);
+      if (p) p.opener = null;
+      else window.location.href = waUrl(telo);
       javi("Otvorili smo WhatsApp sa popunjenom porukom.");
       return;
     }
-    if (vrednost(forma, "website")) { javi("Upit je stigao. Javljamo se na telefon ili mejl koji ste ostavili.", "uspeh"); forma.reset(); return; }
+
+    // Honeypot protiv botova
+    if (vrednost(forma, "website")) {
+      javi(
+        "Upit je stigao. Javljamo se na telefon ili mejl koji ste ostavili.",
+        "uspeh",
+      );
+      forma.reset();
+      return;
+    }
 
     const mailto = () =>
-      (window.location.href = "mailto:" + KONTAKT.mejl + "?subject=" + encodeURIComponent(naslov) + "&body=" + encodeURIComponent(telo));
+      (window.location.href =
+        "mailto:" +
+        KONTAKT.mejl +
+        "?subject=" +
+        encodeURIComponent(naslov) +
+        "&body=" +
+        encodeURIComponent(telo));
 
     if (!FORM_ENDPOINT) {
-      javi("Otvorili smo vaš mejl program sa popunjenom porukom. Ako se ništa nije otvorilo, pišite na " + KONTAKT.mejl + ".");
-      mailto(); return;
+      javi(
+        "Otvorili smo vaš mejl program sa popunjenom porukom. Ako se ništa nije otvorilo, pišite na " +
+          KONTAKT.mejl +
+          ".",
+      );
+      mailto();
+      return;
     }
 
     const dugmad = qa("button[type=submit]", forma);
     const primarno = q('button[data-kanal="mejl"]', forma);
     const staro = primarno ? primarno.textContent : "";
-    dugmad.forEach((b) => { b.disabled = true; });
+
+    dugmad.forEach((b) => {
+      b.disabled = true;
+    });
     if (primarno) primarno.textContent = "Šaljemo...";
     javi("Šaljemo upit...");
 
-    const polja = new URLSearchParams();
-    Array.from(forma.elements).forEach((el) => { if (el.name) polja.set(el.name, el.value); });
+    // Priprema podataka u FormData formatu (najbolje za Google Apps Script)
+    const polja = new FormData();
+    Array.from(forma.elements).forEach((el) => {
+      if (el.name) polja.set(el.name, el.value);
+    });
+
     polja.set("vrsta", forma.dataset.vrsta || "kontakt");
-    polja.set("jedinica", forma.dataset.jedinica || (forma.dataset.vrsta === "vaucer" ? "Poklon vaučer" : ""));
+    polja.set(
+      "jedinica",
+      forma.dataset.jedinica ||
+        (forma.dataset.vrsta === "vaucer" ? "Poklon vaučer" : ""),
+    );
     polja.set("dolazak", stanje.dolazak);
     polja.set("odlazak", stanje.odlazak);
     polja.set("odrasli", String(stanje.odrasli));
     polja.set("deca", String(stanje.deca));
     polja.set("godine", stanje.godine.slice(0, stanje.deca).join(","));
-    polja.set("stranica", window.location.pathname.split("/").pop() || "index.html");
+    polja.set(
+      "stranica",
+      window.location.pathname.split("/").pop() || "index.html",
+    );
     polja.set("naslov", naslov);
     polja.set("poruka_cela", telo);
 
-    const vrati = () => { dugmad.forEach((b) => { b.disabled = false; }); if (primarno) primarno.textContent = staro; };
+    const vrati = () => {
+      dugmad.forEach((b) => {
+        b.disabled = false;
+      });
+      if (primarno) primarno.textContent = staro;
+    };
 
-    fetch(FORM_ENDPOINT, { method: "POST", body: polja })
-      .then((r) => r.json().catch(() => ({ ok: r.ok })))
-      .then((o) => {
+    // Slanje sa no-cors modom (sprečava CORS blokadu u browseru)
+    fetch(FORM_ENDPOINT, { method: "POST", body: polja, mode: "no-cors" })
+      .then(() => {
         vrati();
-        if (o && o.ok) {
-          javi("Upit je stigao. Javljamo se na telefon ili mejl koji ste ostavili.", "uspeh");
-          forma.reset();
-          qa(".polje--greska", forma).forEach((el) => el.classList.remove("polje--greska"));
-          osveziLinkove();
-        } else {
-          javi("Slanje nije uspelo. Otvaramo mejl program. Ako se žuri, pozovite " + KONTAKT.telPrikaz + ".", "greska");
-          mailto();
-        }
+        javi(
+          "Upit je stigao. Javljamo se na telefon ili mejl koji ste ostavili.",
+          "uspeh",
+        );
+        forma.reset();
+        qa(".polje--greska", forma).forEach((el) =>
+          el.classList.remove("polje--greska"),
+        );
+        if (typeof osveziLinkove === "function") osveziLinkove();
       })
       .catch(() => {
         vrati();
-        javi("Slanje nije uspelo. Otvaramo mejl program. Ako se žuri, pozovite " + KONTAKT.telPrikaz + ".", "greska");
+        javi(
+          "Slanje nije uspelo. Otvaramo mejl program. Ako se žuri, pozovite " +
+            KONTAKT.telPrikaz +
+            ".",
+          "greska",
+        );
         mailto();
       });
   }
@@ -492,7 +744,6 @@
       posalji(forma, (e.submitter && e.submitter.dataset.kanal) || "mejl");
     });
   });
-
   /* ------------------------------------------------------------------------
      7. HARMONIKA
      ------------------------------------------------------------------------ */
@@ -519,14 +770,20 @@
     const slika = q("[data-lb-slika]", kutija);
     const potpis = q("[data-lb-potpis]", kutija);
     const broj = q("[data-lb-broj]", kutija);
-    let grupa = [], i = 0;
+    let grupa = [],
+      i = 0;
 
     const prikazi = (n) => {
       i = (n + grupa.length) % grupa.length;
       const el = grupa[i];
-      slika.src = el.dataset.puna || el.querySelector("img").currentSrc || el.querySelector("img").src;
+      slika.src =
+        el.dataset.puna ||
+        el.querySelector("img").currentSrc ||
+        el.querySelector("img").src;
       slika.alt = el.querySelector("img").alt || "";
-      if (potpis) potpis.textContent = el.dataset.potpis || el.querySelector("img").alt || "";
+      if (potpis)
+        potpis.textContent =
+          el.dataset.potpis || el.querySelector("img").alt || "";
       if (broj) broj.textContent = i + 1 + " / " + grupa.length;
     };
     qa("[data-lb]").forEach((el) => {
@@ -537,15 +794,29 @@
         document.body.style.overflow = "hidden";
       });
     });
-    kutija.addEventListener("close", () => { document.body.style.overflow = ""; });
-    q("[data-lb-x]", kutija).addEventListener("click", () => kutija.close());
-    q("[data-lb-nazad]", kutija).addEventListener("click", () => prikazi(i - 1));
-    q("[data-lb-napred]", kutija).addEventListener("click", () => prikazi(i + 1));
-    kutija.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowLeft") { e.preventDefault(); prikazi(i - 1); }
-      if (e.key === "ArrowRight") { e.preventDefault(); prikazi(i + 1); }
+    kutija.addEventListener("close", () => {
+      document.body.style.overflow = "";
     });
-    kutija.addEventListener("click", (e) => { if (e.target === kutija) kutija.close(); });
+    q("[data-lb-x]", kutija).addEventListener("click", () => kutija.close());
+    q("[data-lb-nazad]", kutija).addEventListener("click", () =>
+      prikazi(i - 1),
+    );
+    q("[data-lb-napred]", kutija).addEventListener("click", () =>
+      prikazi(i + 1),
+    );
+    kutija.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        prikazi(i - 1);
+      }
+      if (e.key === "ArrowRight") {
+        e.preventDefault();
+        prikazi(i + 1);
+      }
+    });
+    kutija.addEventListener("click", (e) => {
+      if (e.target === kutija) kutija.close();
+    });
   }
 
   /* ------------------------------------------------------------------------
@@ -561,14 +832,18 @@
           if (!u.isIntersecting) return;
           const el = u.target;
           const roditelj = el.parentElement;
-          const braca = roditelj ? Array.from(roditelj.children).filter((x) => x.classList.contains("anim")) : [];
+          const braca = roditelj
+            ? Array.from(roditelj.children).filter((x) =>
+                x.classList.contains("anim"),
+              )
+            : [];
           const red = Math.min(braca.indexOf(el), 5);
           el.style.transitionDelay = red > 0 ? red * 70 + "ms" : "";
           el.classList.add("vidljiv");
           io.unobserve(el);
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
     );
     zaAnim.forEach((el) => io.observe(el));
   }
@@ -577,7 +852,10 @@
      10. Start
      ------------------------------------------------------------------------ */
   const hero = q(".hero");
-  if (hero) requestAnimationFrame(() => requestAnimationFrame(() => hero.classList.add("ucitan")));
+  if (hero)
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => hero.classList.add("ucitan")),
+    );
 
   osveziLinkove();
 })();
