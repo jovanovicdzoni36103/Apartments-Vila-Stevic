@@ -1,20 +1,37 @@
-# Vila & SPA Stević, primer za Apache hosting.
-# Ako hosting nije Apache, 404 stranica se podešava u panelu hostinga.
+# Vila & SPA Stević — Apache podešavanja za statični sajt.
 
 ErrorDocument 404 /404.html
 
-# Kompresija
+# UTF-8 za sve tekstualne fajlove
+AddDefaultCharset UTF-8
+
+# WebP i moderni formati
+AddType image/webp .webp
+
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json image/svg+xml
 </IfModule>
 
-# Keširanje statike
 <IfModule mod_expires.c>
   ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
   ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
   ExpiresByType image/png "access plus 1 year"
   ExpiresByType image/x-icon "access plus 1 year"
-  ExpiresByType text/css "access plus 7 days"
-  ExpiresByType application/javascript "access plus 7 days"
-  ExpiresByType text/html "access plus 0 seconds"
 </IfModule>
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+# www i https, uključiti tek kada sajt bude na domenu sa sertifikatom
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteCond %{HTTPS} off
+#   RewriteRule ^(.*)$ https://www.vilastevic.com/$1 [R=301,L]
+# </IfModule>

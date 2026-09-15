@@ -1,521 +1,275 @@
 <!doctype html>
 <html lang="sr">
-  <head>
-    <!--
-  VILA & SPA STEVIĆ, Srebrno jezero. Statični sajt: 8 stranica, bez build koraka i bez biblioteka.
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Poklon vaučeri | Vila &amp; SPA Stević</title>
+<meta name="description" content="Poklon vaučeri Romantic (70 EUR) i Spa vikend (140 EUR) za dve osobe, ili vaučer koji sastavljate sami. Prenoćište, spa karta i masaža.">
+<link rel="canonical" href="https://www.vilastevic.com/vauceri.html">
+<meta name="theme-color" content="#f5f1e9">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="sr_RS">
+<meta property="og:site_name" content="Vila &amp; SPA Stević">
+<meta property="og:title" content="Poklon vaučeri | Vila &amp; SPA Stević">
+<meta property="og:description" content="Poklon vaučeri Romantic (70 EUR) i Spa vikend (140 EUR) za dve osobe, ili vaučer koji sastavljate sami. Prenoćište, spa karta i masaža.">
+<meta property="og:url" content="https://www.vilastevic.com/vauceri.html">
+<meta property="og:image" content="https://www.vilastevic.com/slike/og-vila-stevic.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Jost:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Jost:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="css/stil.css">
+</head>
+<body>
+<a class="preskoci" href="#glavno">Preskoči na sadržaj</a>
+<header class="nav">
+<div class="omot nav__omot">
+<a class="nav__znak" href="index.html">Vila &amp; SPA Stević<span>Srebrno jezero</span></a>
+<nav aria-label="Glavna navigacija"><ul class="nav__spisak"><li><a href="smestaj.html">Smeštaj</a></li><li><a href="spa.html">SPA</a></li><li><a href="vauceri.html" aria-current="page">Poklon vaučeri</a></li><li><a href="galerija.html">Galerija</a></li><li><a href="o-nama.html">O nama</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></nav>
+<button type="button" class="dugme dugme--tiho nav__akcija" data-panel aria-controls="panel-termin">Proveri termin</button>
+<button type="button" class="nav__meni" data-meni aria-controls="meni" aria-expanded="false"><span>Meni</span><span class="nav__crte" aria-hidden="true"><i></i><i></i></span></button>
+</div>
+</header>
 
-  FAJLOVI
-  index.html, smestaj.html, spa.html, galerija.html, vauceri.html, o-nama.html, kucni-red.html, kontakt.html
-  css/stil.css    stilovi (boje, razmaci i fontovi su u :root)
-  js/skripta.js   traka za termin, Booking deep link, prenos termina između stranica, forme, animacije, lightbox
-  slike/          fotografije vlasnika (07.09.2026), smanjene na 1600 px, bez EXIF podataka; dron snimci su sa starog sajta
-  Navigacija i podnožje su isti na svim stranicama; menjaju se u svakom fajlu.
+<div class="meni tamno" id="meni" data-otvoren="0">
+<nav aria-label="Sve stranice"><ul class="meni__spisak"><li><a href="index.html"><em>01</em>Početna</a></li><li><a href="smestaj.html"><em>02</em>Smeštaj</a></li><li><a href="spa.html"><em>03</em>SPA</a></li><li><a href="vauceri.html" aria-current="page"><em>04</em>Poklon vaučeri</a></li><li><a href="galerija.html"><em>05</em>Galerija</a></li><li><a href="o-nama.html"><em>06</em>O nama</a></li><li><a href="kucni-red.html"><em>07</em>Kućni red</a></li><li><a href="kontakt.html"><em>08</em>Kontakt</a></li></ul></nav>
+<div class="meni__dno">
+<a class="dugme" href="https://www.booking.com/hotel/rs/vila-stevia.html" data-booking="1" target="_blank" rel="noopener">Vidi cenu na Booking-u</a>
+<a class="dugme dugme--tiho" href="tel:+381644500600">Pozovi 064/4500-600</a>
+</div>
+</div>
 
-  OZNAKE NA STRANICAMA
-  žuto (.tbd)                 podatak koji vlasnik treba da potvrdi
-  isprekidani okvir           mesto za tekst ili fotografiju koje vlasnik popunjava (.mesto-za-tekst, figure.prazno)
+<div class="panel" id="panel-termin" data-otvoren="0" role="dialog" aria-label="Izbor termina">
+<div class="omot panel__unutra">
+<div class="panel__vrh">
+<p class="natpis" style="margin:0">Termin i gosti</p>
+<button type="button" class="panel__zatvori" data-panel-zatvori>Zatvori</button>
+</div>
+<div class="panel__mreza">
+<div class="kal"></div>
+<div>
+<div class="red red--dva">
+<div class="polje">
+<label for="p-odrasli">Odrasli</label>
+<span class="brojac" data-brojac="odrasli" data-min="1" data-max="20">
+<button type="button" aria-label="Manje odraslih">&minus;</button>
+<input id="p-odrasli" type="number" min="1" max="20" inputmode="numeric" value="2">
+<button type="button" aria-label="Više odraslih">+</button>
+</span>
+</div>
+<div class="polje">
+<label for="p-deca">Deca</label>
+<span class="brojac" data-brojac="deca" data-min="0" data-max="10">
+<button type="button" aria-label="Manje dece">&minus;</button>
+<input id="p-deca" type="number" min="0" max="10" inputmode="numeric" value="0">
+<button type="button" aria-label="Više dece">+</button>
+</span>
+</div>
+</div>
+<div class="razmak-vrh" data-godine hidden>
+<p class="natpis" style="margin-bottom:12px">Godine dece</p>
+<div class="red red--dva" data-godine-polja></div>
+<p class="polje__pomoc razmak-vrh">Booking traži godine dece da bi prikazao tačnu cenu.</p>
+</div>
+<p class="malo tiho razmak-vrh">Deca mogu samo u apartmane A i B. Sobe primaju do dve odrasle osobe.</p>
+</div>
+</div>
+<div class="panel__dno">
+<p class="panel__zbir" data-panel-zbir></p>
+<div class="akcije">
+<a class="dugme" href="https://www.booking.com/hotel/rs/vila-stevia.html" data-booking="1" target="_blank" rel="noopener">Vidi cenu na Booking-u</a>
+<a class="veza" href="kontakt.html">Ili pošaljite upit <span class="veza__strelica">&rarr;</span></a>
+</div>
+</div>
+</div>
+</div>
 
-  SLIKE se menjaju na JEDNOM mestu: objekat SLIKE na vrhu js/skripta.js. Jedna slika = jedna vrednost.
-  FORME nemaju backend: mailto i WhatsApp sa popunjenom porukom. Endpoint ide u const FORM_ENDPOINT u js/skripta.js.
-  og:image mora biti puna adresa (https://domen/slike/vila-dan.jpg) kad sajt dobije domen.
--->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover"
-    />
-    <title>Poklon vaučer | Vila &amp; SPA Stević, Srebrno jezero</title>
-    <meta
-      name="description"
-      content="Poklon vaučer za boravak u Vili Stević na Srebrnom jezeru. Važi bez roka. Sadržaj i uplata se dogovaraju direktno sa vilom."
-    />
-    <meta name="theme-color" content="#ffffff" />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="sr_RS" />
-    <meta
-      property="og:title"
-      content="Poklon vaučer | Vila &amp; SPA Stević, Srebrno jezero"
-    />
-    <meta
-      property="og:description"
-      content="Poklon vaučer za boravak u Vili Stević na Srebrnom jezeru. Važi bez roka. Sadržaj i uplata se dogovaraju direktno sa vilom."
-    />
-    <meta
-      property="og:image"
-      content="https://vilastevic.com/slike/og-vila-stevic.jpg"
-    />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta
-      property="og:image:alt"
-      content="Vila &amp; SPA Stević, ulaz i dvorište"
-    />
-    <link rel="canonical" href="https://vilastevic.com/vauceri.html" />
-    <link rel="icon" href="favicon.ico" sizes="any" />
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-    <link rel="manifest" href="site.webmanifest" />
-    <meta property="og:url" content="https://vilastevic.com/vauceri.html" />
-    <meta property="og:site_name" content="Vila &amp; SPA Stević" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Poklon vaučer | Vila &amp; SPA Stević, Srebrno jezero"
-    />
-    <meta
-      name="twitter:description"
-      content="Poklon vaučer za boravak u Vili Stević na Srebrnom jezeru. Važi bez roka. Sadržaj i uplata se dogovaraju direktno sa vilom."
-    />
-    <meta
-      name="twitter:image"
-      content="https://vilastevic.com/slike/og-vila-stevic.jpg"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-    />
-    <link rel="stylesheet" href="css/stil.css" />
-  </head>
-  <body>
-    <a class="preskoci" href="#glavno">Pređi na sadržaj</a>
-
-    <header class="nav">
-      <div class="nav__unutra">
-        <a class="nav__ime" href="index.html">Vila &amp; SPA Stević</a>
-        <nav aria-label="Glavna navigacija">
-          <ul class="nav__linkovi">
-            <li><a href="smestaj.html">Smeštaj</a></li>
-            <li><a href="spa.html">SPA</a></li>
-            <li><a href="galerija.html">Galerija</a></li>
-            <li><a href="vauceri.html" aria-current="page">Vaučeri</a></li>
-            <li><a href="o-nama.html">O nama</a></li>
-            <li><a href="kontakt.html">Kontakt</a></li>
-          </ul>
-        </nav>
-        <a
-          class="dugme dugme--primarno dugme--malo nav__cta"
-          href="index.html#termin"
-          data-cta="nav-termin"
-          >Proveri termin</a
-        >
-        <button
-          class="nav__hamburger"
-          type="button"
-          aria-expanded="false"
-          aria-controls="meni"
-          aria-label="Otvori meni"
-        >
-          <span></span>
-        </button>
-      </div>
-    </header>
-
-    <div class="meni" id="meni">
-      <a href="index.html">Početna</a><a href="smestaj.html">Smeštaj</a
-      ><a href="spa.html">SPA</a><a href="galerija.html">Galerija</a
-      ><a href="vauceri.html" aria-current="page">Vaučeri</a
-      ><a href="o-nama.html">O nama</a><a href="kucni-red.html">Kućni red</a
-      ><a href="kontakt.html">Kontakt</a>
-      <a
-        class="dugme dugme--primarno"
-        href="index.html#termin"
-        data-cta="meni-termin"
-        >Proveri termin</a
-      >
-      <p class="meni__kontakt">
-        Jezerska bb, Beli Bagrem, Srebrno jezero<br /><a
-          href="tel:+381644500600"
-          >064/4500-600</a
-        >
-        · <a href="mailto:vilastevic@gmail.com">vilastevic@gmail.com</a>
-      </p>
-    </div>
-
-    <main id="glavno">
-      <header class="zaglavlje">
-        <div class="kontejner">
-          <div class="sekcija__uvod" data-stagger>
-            <h1 class="naslov anim">Poklon vaučer. Bez roka.</h1>
-            <p class="podnaslov anim">
-              Poklonite boravak u Vili Stević. Vaučer važi bez roka trajanja.
-            </p>
-          </div>
-        </div>
-      </header>
-
-      <section class="sekcija">
-        <div class="kontejner kontejner--sirok">
-          <div class="vauceri__mreza">
-            <div class="vaucer-slika anim">
-              // Ovde treba napraviti reorganizaciju sekcije, ideja sekcije je
-              BILA da ima 1 vaucer, medjutim sad postoji 2 + moze da se postavi
-              custom pitanje da se kontaktira vila i da se dogovori sta sadrzi
-              vaucer. Treba da se razmisli kako da se ovo organizuje, da li da
-              se napravi 2 sekcije ili da se sve stavi u jednu. u folderu
-              'slike' nalaze se slike 'romantik_vaucer.png' i 'spa
-              vikend_vaucer.png' e ovaj sto je vikend on je premium i videces da
-              je on kao zlatan kao premium a romantik nije zlatan
-              <img
-                data-slika="vaucer"
-                alt="Poklon vaučer Vila &amp; SPA Stević"
-                width="1536"
-                height="1024"
-                src="slike/vaucer.jpg"
-              />
-            </div>
-            <ol class="koraci" data-stagger style="grid-template-columns: 1fr">
-              <li class="anim">
-                <h3>Pošaljite upit</h3>
-                <p>
-                  Kroz formu ispod, pozivom na 064/4500-600 ili porukom na
-                  WhatsApp i Viber.
-                </p>
-              </li>
-              <li class="anim">
-                <h3>Dogovorite sadržaj</h3>
-                <p>
-                  Šta vaučer sadrži dogovarate direktno sa vilom, na primer dva
-                  noćenja za dvoje.
-                  <span class="tbd" data-podatak="vaucerSadrzaj"
-                    >[potvrditi: šta vaučer sadrži]</span
-                  >
-                </p>
-              </li>
-              <li class="anim">
-                <h3>Uplata i vaučer</h3>
-                <p>
-                  Uplata ide direktno vili. Na sajtu nema plaćanja.
-                  <span class="tbd" data-podatak="vaucerPlacanje"
-                    >[potvrditi: način plaćanja vaučera]</span
-                  >
-                  <span class="tbd" data-podatak="vaucerDostava"
-                    >[potvrditi: kako se vaučer dostavlja, mejlom ili
-                    štampan]</span
-                  >
-                </p>
-              </li>
-            </ol>
-          </div>
-        </div>
-      </section>
-
-      <section class="sekcija sekcija--siva" id="upit">
-        <div class="kontejner kontejner--sirok">
-          <div class="vauceri__mreza">
-            <div data-stagger>
-              <h2 class="naslov naslov--kolona anim">Pošaljite upit.</h2>
-              <p class="podnaslov anim">
-                Odgovaramo na mejl, WhatsApp ili telefonom, kako vam je lakše.
-              </p>
-              <div class="kontakt__kanali" data-stagger>
-                <a
-                  class="kanal anim"
-                  href="tel:+381644500600"
-                  data-cta="vaucer-poziv"
-                >
-                  <span class="kanal__ikona"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.8"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"
-                      /></svg
-                  ></span>
-                  <span class="kanal__tekst"
-                    ><strong>Pozovi</strong><span>064/4500-600</span></span
-                  >
-                </a>
-                <a
-                  class="kanal anim js-wa"
-                  href="https://wa.me/381644500600"
-                  target="_blank"
-                  rel="noopener"
-                  data-cta="vaucer-whatsapp-kanal"
-                  data-tema="vaucer"
-                  ><span class="kanal__ikona"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.8"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-5A8 8 0 1 1 21 12z"
-                      /></svg></span
-                  ><span class="kanal__tekst"
-                    ><strong>WhatsApp</strong
-                    ><span>Poruka na 064/4500-600</span></span
-                  ></a
-                >
-                <a
-                  class="kanal anim"
-                  href="viber://chat?number=%2B381644500600"
-                  data-cta="vaucer-viber"
-                >
-                  <span class="kanal__ikona"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.8"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-5A8 8 0 1 1 21 12z"
-                      />
-                      <path d="M8.5 12h.01M12 12h.01M15.5 12h.01" /></svg
-                  ></span>
-                  <span class="kanal__tekst"
-                    ><strong>Viber</strong><span>+381 64 4500 600</span></span
-                  >
-                </a>
-              </div>
-            </div>
-            <div class="forma-kartica anim" id="forma">
-              <h3 class="forma-kartica__naslov">Upit za vaučer</h3>
-              <form class="forma js-forma" data-vrsta="vaucer" novalidate>
-                <div class="polje">
-                  <label for="v-ime">Ime i prezime</label
-                  ><input
-                    id="v-ime"
-                    name="ime"
-                    type="text"
-                    required
-                    autocomplete="name"
-                  />
-                </div>
-                <div class="polje">
-                  <label for="v-telefon">Telefon</label
-                  ><input
-                    id="v-telefon"
-                    name="telefon"
-                    type="tel"
-                    autocomplete="tel"
-                  />
-                </div>
-                <div class="polje polje--puno">
-                  <label for="v-mejl">Mejl</label
-                  ><input
-                    id="v-mejl"
-                    name="mejl"
-                    type="email"
-                    autocomplete="email"
-                  />
-                </div>
-                <div class="polje polje--puno">
-                  <label for="v-sadrzaj">Šta biste poklonili</label
-                  ><input id="v-sadrzaj" name="sadrzaj" type="text" required />
-                </div>
-                <div class="polje polje--puno">
-                  <label for="v-poruka">Poruka</label
-                  ><textarea id="v-poruka" name="poruka" rows="4"></textarea>
-                </div>
-                <div class="polje polje--puno pcelinjak" aria-hidden="true">
-                  <label for="v-website">Ne popunjavajte ovo polje</label
-                  ><input
-                    id="v-website"
-                    name="website"
-                    type="text"
-                    tabindex="-1"
-                    autocomplete="off"
-                  />
-                </div>
-                <div class="forma__dugmad">
-                  <button
-                    class="dugme dugme--primarno"
-                    type="submit"
-                    data-kanal="mejl"
-                    data-cta="vaucer-mejl"
-                  >
-                    Pošalji upit
-                  </button>
-                  <button
-                    class="dugme dugme--sekundarno"
-                    type="submit"
-                    data-kanal="wa"
-                    data-cta="vaucer-whatsapp"
-                  >
-                    Ili preko WhatsApp-a
-                  </button>
-                </div>
-                <p class="forma__napomena">
-                  Upit stiže vlasniku na mejl. Odgovor dobijate na telefon ili
-                  mejl koji ste ostavili, obično isti dan. Ako vam se žuri,
-                  pozovite 064/4500-600.
-                </p>
-                <p class="forma__status" role="status" aria-live="polite"></p>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="podnozje">
-      <div class="kontejner kontejner--sirok">
-        <div class="podnozje__mreza">
-          <div>
-            <p class="podnozje__ime">Vila &amp; SPA Stević</p>
-            <address>
-              Jezerska bb, Beli Bagrem<br />Srebrno jezero, Veliko Gradište
-            </address>
-            <p class="podnozje__stranica" style="margin-top: 8px">
-              Od 2002. na Srebrnom jezeru.
-            </p>
-          </div>
-          <div>
-            <p class="podnozje__ime">Stranice</p>
-            <ul class="podnozje__linkovi">
-              <li><a href="index.html">Početna</a></li>
-              <li><a href="smestaj.html">Smeštaj</a></li>
-              <li><a href="spa.html">SPA</a></li>
-              <li><a href="galerija.html">Galerija</a></li>
-              <li><a href="vauceri.html">Vaučeri</a></li>
-              <li><a href="o-nama.html">O nama</a></li>
-              <li><a href="kucni-red.html">Kućni red</a></li>
-              <li><a href="kontakt.html">Kontakt</a></li>
-            </ul>
-          </div>
-          <div>
-            <p class="podnozje__ime">Kontakt</p>
-            <p>
-              <a href="tel:+381644500600" data-cta="podnozje-poziv"
-                >064/4500-600</a
-              ><br /><a
-                href="mailto:vilastevic@gmail.com"
-                data-cta="podnozje-mejl-tekst"
-                >vilastevic@gmail.com</a
-              >
-            </p>
-            <div class="podnozje__ikone" style="margin-top: 12px">
-              <a
-                class="js-wa"
-                href="https://wa.me/381644500600"
-                target="_blank"
-                rel="noopener"
-                aria-label="WhatsApp"
-                title="WhatsApp"
-                data-cta="podnozje-whatsapp"
-                ><svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-5A8 8 0 1 1 21 12z"
-                  /></svg
-              ></a>
-              <a
-                href="viber://chat?number=%2B381644500600"
-                aria-label="Viber"
-                title="Viber"
-                data-cta="podnozje-viber"
-                ><svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-5A8 8 0 1 1 21 12z"
-                  />
-                  <path d="M8.5 12h.01M12 12h.01M15.5 12h.01" /></svg
-              ></a>
-              <a
-                href="mailto:vilastevic@gmail.com"
-                aria-label="Mejl"
-                title="Mejl"
-                data-cta="podnozje-mejl"
-                ><svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <rect x="3" y="5" width="18" height="14" rx="2" />
-                  <path d="m3 7 9 6 9-6" /></svg
-              ></a>
-            </div>
-          </div>
-        </div>
-        <div class="podnozje__dno">
-          <p>
-            <a href="kucni-red.html">Kućni red</a> ·
-            <a href="kontakt.html">Kontakt</a>
-          </p>
-          <p>© <span id="godina">2026</span> Vila &amp; SPA Stević</p>
-        </div>
-      </div>
-    </footer>
-
-    <nav class="mobilna" aria-label="Brze akcije">
-      <a href="tel:+381644500600" data-cta="mobilna-poziv"
-        ><svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.8"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <path
-            d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"
-          /></svg
-        >Pozovi</a
-      >
-      <a
-        class="js-wa"
-        href="https://wa.me/381644500600"
-        target="_blank"
-        rel="noopener"
-        data-cta="mobilna-whatsapp"
-        ><svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.8"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-5A8 8 0 1 1 21 12z" /></svg
-        >WhatsApp</a
-      >
-      <a
-        class="mobilna__booking js-booking"
-        href="https://www.booking.com/hotel/rs/vila-stevia.html"
-        target="_blank"
-        rel="noopener"
-        data-cta="mobilna-booking"
-        >Booking</a
-      >
-    </nav>
-
-    <!-- FORME: pravi endpoint (Formspree ili Web3Forms) se upisuje u const FORM_ENDPOINT na vrhu js/skripta.js. Jedna linija. -->
-    <script src="js/skripta.js"></script>
-  </body>
+<main id="glavno">
+<header class="zaglavlje">
+<div class="omot">
+<p class="natpis natpis--mesing">Poklon vaučeri</p>
+<h1 class="zaglavlje__naslov">Dva gotova vaučera<br>i jedan vaš.</h1>
+<p class="zaglavlje__lead">Za rođendan, godišnjicu, venčanje, nagradu zaposlenima ili bez povoda. Vaučer važi za dve osobe i rezerviše se unapred.</p>
+</div>
+</header>
+<section class="odeljak" id="romantic">
+<div class="omot">
+<div class="blok">
+<div class="anim">
+<figure class="anim-foto"><div class="foto foto--45"><picture><source type="image/webp" srcset="slike/soba-bracni-1.webp" sizes="(min-width: 900px) 44vw, 92vw"><img src="slike/soba-bracni-1.jpg" alt="Soba u kojoj se koristi vaučer Romantic" width="1100" height="1375" loading="lazy" decoding="async"></picture></div></figure>
+<figure class="grafika razmak-vrh"><picture><source type="image/webp" srcset="slike/vaucer-romantik.webp"><img src="slike/vaucer-romantik.jpg" alt="Grafika poklon vaučera Romantic" loading="lazy" decoding="async" width="1600" height="500"></picture>
+<figcaption class="potpis" style="border:0;padding-left:0;margin-top:12px">Ovako izgleda vaučer koji dobijate.</figcaption></figure>
+</div>
+<div class="vaucer  anim">
+<div class="vaucer__zaglavlje">
+<h2 class="vaucer__ime">Romantic</h2>
+<p class="vaucer__cena"><b>70</b><span>EUR za dve osobe</span></p>
+</div>
+<div>
+<p class="tiho" style="margin-bottom:20px">Jedno prenoćište za dvoje, sa svime što ide uz njega.</p>
+<ul class="vaucer__spisak"><li>Prenoćište za dve osobe</li><li>Korpa svežeg voća i dekoracija u sobi</li><li>Spa karta za dve osobe</li><li>Šampanjac uz đakuzi</li><li>Jutarnja kafa u sobi</li><li>Kasna odjava do 14h</li><li>Parking</li></ul>
+</div>
+<div class="akcije">
+<a class="dugme " href="#poruci">Poruči ovaj vaučer</a>
+<a class="veza" href="#" data-wa="" data-wa-tema="vaucer">WhatsApp <span class="veza__strelica">&rarr;</span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="odeljak odeljak--alt" id="spa-vikend">
+<div class="omot">
+<div class="blok blok--obrnut">
+<div class="anim">
+<figure class="anim-foto"><div class="foto foto--45"><picture><source type="image/webp" srcset="slike/spa-djakuzi-usko.webp" sizes="(min-width: 900px) 44vw, 92vw"><img src="slike/spa-djakuzi-usko.jpg" alt="Đakuzi u SPA centru" width="1100" height="1375" loading="lazy" decoding="async"></picture></div></figure>
+<figure class="grafika razmak-vrh"><picture><source type="image/webp" srcset="slike/vaucer-spa-vikend.webp"><img src="slike/vaucer-spa-vikend.jpg" alt="Grafika poklon vaučera Spa vikend" loading="lazy" decoding="async" width="1600" height="500"></picture>
+<figcaption class="potpis" style="border:0;padding-left:0;margin-top:12px">Ovako izgleda vaučer koji dobijate.</figcaption></figure>
+</div>
+<div class="vaucer vaucer--mesing anim">
+<div class="vaucer__zaglavlje">
+<h2 class="vaucer__ime">Spa vikend</h2>
+<p class="vaucer__cena"><b>140</b><span>EUR za dve osobe</span></p>
+</div>
+<div>
+<p class="tiho" style="margin-bottom:20px">Dva prenoćišta i dva dana: prvi dan spa, drugi dan masaža.</p>
+<ul class="vaucer__spisak"><li>Dva prenoćišta za dve osobe</li><li>Prvog dana spa karta za dve osobe</li><li>Drugog dana dve relax masaže celog tela od 60 minuta</li><li>Jutarnja kafa u sobi</li><li>Flaša vina</li><li>Kasna odjava do 14h</li><li>Parking</li></ul>
+</div>
+<div class="akcije">
+<a class="dugme dugme--mesing" href="#poruci">Poruči ovaj vaučer</a>
+<a class="veza" href="#" data-wa="" data-wa-tema="vaucer">WhatsApp <span class="veza__strelica">&rarr;</span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="odeljak">
+<div class="omot">
+<div class="blok blok--vrh">
+<div class="anim">
+<p class="natpis">Treća opcija</p>
+<h2 class="veliki">Napravite sami<br>sadržaj vaučera.</h2>
+</div>
+<div class="anim">
+<p>Ako nijedna od dve kombinacije ne odgovara, pozovite nas i složićemo vaučer po vašoj želji. Broj noćenja, spa, masaža, večera za dvoje, bilo šta od toga.</p>
+<div class="akcije razmak-vrh">
+<a class="dugme" href="tel:+381644500600">Pozovi 064/4500-600</a>
+<a class="veza" href="#poruci">Pošalji upit <span class="veza__strelica">&rarr;</span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="odeljak odeljak--alt" id="poruci">
+<div class="omot">
+<div class="blok blok--vrh">
+<div class="anim">
+<p class="natpis">Kako se poručuje</p>
+<h2 class="veliki">Javite nam,<br>pa šaljemo uplatnicu.</h2>
+<p class="razmak-vrh tiho">Popunite formu ili nas pozovite. Posle dogovora šaljemo instrukcije za uplatu. Kada uplata stigne, vaučer je vaš.</p>
+<ul class="oprema razmak-vrh" style="columns:1"><li>Spa karta je oko dva sata korišćenja SPA centra: slana soba 30 minuta, sauna tri puta po 15 minuta i đakuzi 30 minuta.</li><li>Boravišna taksa nije uključena u vaučer. Iznosi 80,00 dinara po osobi po danu.</li><li>Vaučer se plaća u dinarskoj protivvrednosti, po srednjem kursu Narodne banke Srbije na dan uplate.</li><li>Vaučer se ne može zameniti za novčanu protivvrednost ni za drugu uslugu.</li><li>Boravak po vaučeru se rezerviše unapred.</li></ul>
+</div>
+<div class="anim">
+<form class="forma js-forma" data-vrsta="vaucer">
+<div class="polje">
+<label for="v-vaucer">Koji vaučer</label>
+<select id="v-vaucer" name="vaucer" required>
+<option value="">Izaberite</option>
+<option value="Romantic (70 EUR)">Romantic &middot; 70 EUR</option><option value="Spa vikend (140 EUR)">Spa vikend &middot; 140 EUR</option>
+<option value="Vaučer po želji">Vaučer po mojoj želji</option>
+</select>
+</div>
+<div class="red red--dva">
+<div class="polje"><label for="v-ime">Ime i prezime</label><input id="v-ime" name="ime" type="text" autocomplete="name" required></div>
+<div class="polje"><label for="v-telefon">Telefon</label><input id="v-telefon" name="telefon" type="tel" autocomplete="tel" inputmode="tel"></div>
+</div>
+<div class="polje"><label for="v-mejl">Mejl</label><input id="v-mejl" name="mejl" type="email" autocomplete="email"></div>
+<div class="polje"><label for="v-poruka">Poruka</label><textarea id="v-poruka" name="poruka" rows="3" placeholder="Za koga je vaučer, kada biste ga koristili..."></textarea></div>
+<div class="med"><label for="v-website">Ne popunjavati</label><input id="v-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+<div class="akcije">
+<button type="submit" class="dugme dugme--mesing" data-kanal="mejl">Pošalji upit</button>
+<button type="submit" class="dugme dugme--tiho" data-kanal="wa">Preko WhatsApp-a</button>
+</div>
+<p class="forma__status" role="status" aria-live="polite"></p>
+<p class="polje__pomoc">Upit stiže vlasniku na mejl. Odgovaramo na telefon ili mejl koji ste ostavili, obično istog dana.</p>
+</form>
+</div>
+</div>
+</div>
+</section>
+</main>
+<section class="kraj">
+<div class="kraj__slika"><picture><source type="image/webp" srcset="slike/spa-djakuzi.webp"><img src="slike/spa-djakuzi.jpg" alt="Đakuzi u SPA centru" loading="lazy" decoding="async"></picture></div>
+<div class="kraj__vel"></div>
+<div class="omot"><div class="kraj__sadrzaj">
+<h2 class="veliki anim">Poklon koji traje<br>dva dana, ne dva minuta.</h2>
+<p class="anim razmak-vrh" style="color:rgba(255,255,255,.84);max-width:34em">Vaučer poručujete telefonom, preko WhatsApp-a ili preko forme. Odgovaramo istog dana.</p>
+<div class="akcije anim razmak-vrh">
+<a class="dugme dugme--svetlo" href="https://www.booking.com/hotel/rs/vila-stevia.html" data-booking="1" target="_blank" rel="noopener">Vidi cenu na Booking-u</a>
+<a class="dugme dugme--tiho" href="tel:+381644500600">Pozovi 064/4500-600</a>
+</div>
+</div></div>
+</section>
+<footer class="podnozje">
+<div class="omot">
+<div class="podnozje__mreza">
+<div>
+<p class="podnozje__znak">Vila &amp; SPA Stević</p>
+<address class="razmak-vrh">
+Jezerska bb, Beli Bagrem<br>
+Srebrno jezero, Veliko Gradište<br>
+<a href="tel:+381644500600">064/4500-600</a> &middot; <a href="mailto:vilastevic@gmail.com">vilastevic@gmail.com</a>
+</address>
+</div>
+<div>
+<p class="podnozje__naslov">Stranice</p>
+<ul>
+<li><a href="smestaj.html">Smeštaj</a></li>
+<li><a href="spa.html">SPA centar</a></li>
+<li><a href="vauceri.html">Poklon vaučeri</a></li>
+<li><a href="galerija.html">Galerija</a></li>
+</ul>
+</div>
+<div>
+<p class="podnozje__naslov">Informacije</p>
+<ul>
+<li><a href="o-nama.html">O nama</a></li>
+<li><a href="kucni-red.html">Kućni red</a></li>
+<li><a href="kontakt.html">Kontakt i lokacija</a></li>
+<li><a href="https://www.booking.com/hotel/rs/vila-stevia.html" data-booking="1" target="_blank" rel="noopener">Rezervacija na Booking-u</a></li>
+</ul>
+</div>
+</div>
+<div class="podnozje__dno">
+<p>&copy; <span id="godina">2026</span> Vila &amp; SPA Stević</p>
+<a href="https://www.google.com/maps/search/?api=1&query=44.764638,21.479723" target="_blank" rel="noopener">Prikaži na mapi</a>
+<a href="tel:+381644500600">064/4500-600</a>
+</div>
+</div>
+</footer>
+<nav class="mobilna" aria-label="Brze akcije">
+<a href="tel:+381644500600"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 5.5 5.5L16 12l4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3.5 5.2 2 2 0 0 1 5.5 3z"/></svg><span>Pozovi</span></a>
+<a href="#" data-wa="" data-wa-tema=""><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M3.5 20.5 5 16.3A8.4 8.4 0 1 1 8.2 19.3z"/><path d="M8.8 9.2c.3 1 .9 2 1.7 2.8s1.8 1.4 2.8 1.7l1-1.2 2.1.8v1.6c-1.7.5-4-.4-5.9-2.3S8 8.2 8.4 6.5H10l.8 2.1z"/></svg><span>WhatsApp</span></a>
+<a href="https://www.booking.com/hotel/rs/vila-stevia.html" data-booking="1" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M5 4h14v16l-7-3.5L5 20z"/></svg><span>Cena</span></a>
+</nav>
+<dialog class="svetlo-kutija" id="svetlo-kutija" aria-label="Fotografija">
+<div class="svetlo-kutija__vrh">
+<span class="svetlo-kutija__broj" data-lb-broj></span>
+<button type="button" class="svetlo-kutija__x" data-lb-x>Zatvori</button>
+</div>
+<div class="svetlo-kutija__slika"><img alt="" data-lb-slika></div>
+<button type="button" class="svetlo-kutija__strelica svetlo-kutija__strelica--nazad" data-lb-nazad aria-label="Prethodna">&#8249;</button>
+<button type="button" class="svetlo-kutija__strelica svetlo-kutija__strelica--napred" data-lb-napred aria-label="Sledeća">&#8250;</button>
+<p class="svetlo-kutija__potpis" data-lb-potpis></p>
+</dialog>
+<script src="js/skripta.js" defer></script>
+<script>document.getElementById("godina").textContent=new Date().getFullYear();</script>
+</body>
 </html>

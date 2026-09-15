@@ -1,0 +1,18 @@
+# Sistemski fajlovi
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+
+# Editori
+.vscode/
+.idea/
+
+# Originalni materijal vlasnika (veliki fajlovi, nisu deo sajta)
+Dokumenta za sajt 2026/
+
+# Radni fajlovi
+screenshots/
+*.zip
+*.log

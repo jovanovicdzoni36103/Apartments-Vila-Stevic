@@ -1,93 +1,85 @@
 <!doctype html>
 <html lang="sr">
   <head>
-    <!--
-  VILA & SPA STEVIĆ, Srebrno jezero. Statični sajt: 8 stranica, bez build koraka i bez biblioteka.
-
-  FAJLOVI
-  index.html, smestaj.html, spa.html, galerija.html, vauceri.html, o-nama.html, kucni-red.html, kontakt.html
-  css/stil.css    stilovi (boje, razmaci i fontovi su u :root)
-  js/skripta.js   traka za termin, Booking deep link, prenos termina između stranica, forme, animacije, lightbox
-  slike/          fotografije vlasnika (07.09.2026), smanjene na 1600 px, bez EXIF podataka; dron snimci su sa starog sajta
-  Navigacija i podnožje su isti na svim stranicama; menjaju se u svakom fajlu.
-
-  OZNAKE NA STRANICAMA
-  žuto (.tbd)                 podatak koji vlasnik treba da potvrdi
-  isprekidani okvir           mesto za tekst ili fotografiju koje vlasnik popunjava (.mesto-za-tekst, figure.prazno)
-
-  SLIKE se menjaju na JEDNOM mestu: objekat SLIKE na vrhu js/skripta.js. Jedna slika = jedna vrednost.
-  FORME nemaju backend: mailto i WhatsApp sa popunjenom porukom. Endpoint ide u const FORM_ENDPOINT u js/skripta.js.
-  og:image mora biti puna adresa (https://domen/slike/vila-dan.jpg) kad sajt dobije domen.
--->
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
-    <title>Vila &amp; SPA Stević | Srebrno jezero, 100 metara od jezera</title>
+    <title>
+      Vila &amp; SPA Stević | Smeštaj na Srebrnom jezeru sa SPA centrom
+    </title>
     <meta
       name="description"
-      content="Vila &amp; SPA Stević na Srebrnom jezeru: 3 apartmana i 14 soba sto metara od jezera, sa SPA centrom. Cena i slobodni dani su na Booking-u."
+      content="Tri apartmana, četrnaest soba i SPA centar sto metara od Srebrnog jezera, u Belom Bagremu kod Velikog Gradišta. Cena i slobodni dani stoje na Booking-u."
     />
-    <meta name="theme-color" content="#ffffff" />
+    <link rel="canonical" href="https://www.vilastevic.com/index.html" />
+    <meta name="theme-color" content="#f5f1e9" />
+    <meta name="robots" content="index, follow" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="sr_RS" />
+    <meta property="og:site_name" content="Vila &amp; SPA Stević" />
     <meta
       property="og:title"
-      content="Vila &amp; SPA Stević | Srebrno jezero, 100 metara od jezera"
+      content="Vila &amp; SPA Stević | Smeštaj na Srebrnom jezeru sa SPA centrom"
     />
     <meta
       property="og:description"
-      content="Vila &amp; SPA Stević na Srebrnom jezeru: 3 apartmana i 14 soba sto metara od jezera, sa SPA centrom. Cena i slobodni dani su na Booking-u."
+      content="Tri apartmana, četrnaest soba i SPA centar sto metara od Srebrnog jezera, u Belom Bagremu kod Velikog Gradišta. Cena i slobodni dani stoje na Booking-u."
     />
+    <meta property="og:url" content="https://www.vilastevic.com/index.html" />
     <meta
       property="og:image"
-      content="https://vilastevic.com/slike/og-vila-stevic.jpg"
+      content="https://www.vilastevic.com/slike/og-vila-stevic.jpg"
     />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta
-      property="og:image:alt"
-      content="Vila &amp; SPA Stević, ulaz i dvorište"
-    />
-    <link rel="canonical" href="https://vilastevic.com/" />
-    <link rel="icon" href="favicon.ico" sizes="any" />
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-    <link rel="manifest" href="site.webmanifest" />
-    <meta property="og:url" content="https://vilastevic.com/" />
-    <meta property="og:site_name" content="Vila &amp; SPA Stević" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Vila &amp; SPA Stević | Srebrno jezero, 100 metara od jezera"
-    />
-    <meta
-      name="twitter:description"
-      content="Vila &amp; SPA Stević na Srebrnom jezeru: 3 apartmana i 14 soba sto metara od jezera, sa SPA centrom. Cena i slobodni dani su na Booking-u."
-    />
-    <meta
-      name="twitter:image"
-      content="https://vilastevic.com/slike/og-vila-stevic.jpg"
-    />
+    <link rel="icon" href="favicon.ico" sizes="32x32" />
+    <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Jost:wght@300;400;500&display=swap"
+    />
+    <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Jost:wght@300;400;500&display=swap"
+    />
+    <link rel="stylesheet" href="css/stil.css" />
+    <link
+      rel="preload"
+      as="image"
+      href="slike/hero.webp"
+      type="image/webp"
+      media="(min-width: 701px)"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="slike/hero-usko.webp"
+      type="image/webp"
+      media="(max-width: 700px)"
     />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "LodgingBusiness",
+        "@type": "Hotel",
         "name": "Vila & SPA Stević",
-        "url": "https://vilastevic.com/",
-        "image": "https://vilastevic.com/slike/og-vila-stevic.jpg",
+        "url": "https://www.vilastevic.com/",
+        "telephone": "+381644500600",
+        "email": "vilastevic@gmail.com",
+        "image": "https://www.vilastevic.com/slike/og-vila-stevic.jpg",
+        "priceRange": "$$",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Jezerska bb, Beli Bagrem",
           "addressLocality": "Veliko Gradište",
-          "addressRegion": "Srebrno jezero",
+          "addressRegion": "Braničevski okrug",
           "addressCountry": "RS"
         },
         "geo": {
@@ -95,13 +87,15 @@
           "latitude": 44.764638,
           "longitude": 21.479723
         },
-        "telephone": "+381644500600",
-        "email": "vilastevic@gmail.com",
         "checkinTime": "14:00",
         "checkoutTime": "10:00",
         "petsAllowed": false,
-        "sameAs": ["https://www.booking.com/hotel/rs/vila-stevia.html"],
         "amenityFeature": [
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "SPA centar",
+            "value": true
+          },
           {
             "@type": "LocationFeatureSpecification",
             "name": "Besplatan parking",
@@ -111,1265 +105,1107 @@
             "@type": "LocationFeatureSpecification",
             "name": "Besplatan wi-fi",
             "value": true
-          },
-          {
-            "@type": "LocationFeatureSpecification",
-            "name": "SPA centar",
-            "value": true
           }
-        ]
+        ],
+        "numberOfRooms": 17
       }
     </script>
-    <link rel="stylesheet" href="css/stil.css" />
   </head>
   <body>
-    <a class="preskoci" href="#glavno">Pređi na sadržaj</a>
-
-    <header class="nav">
-      <div class="nav__unutra">
-        <a class="nav__ime" href="index.html">Vila &amp; SPA Stević</a>
+    <a class="preskoci" href="#glavno">Preskoči na sadržaj</a>
+    <header class="nav nav--preko">
+      <div class="omot nav__omot">
+        <a class="nav__znak" href="index.html"
+          >Vila &amp; SPA Stević<span>Srebrno jezero</span></a
+        >
         <nav aria-label="Glavna navigacija">
-          <ul class="nav__linkovi">
+          <ul class="nav__spisak">
             <li><a href="smestaj.html">Smeštaj</a></li>
             <li><a href="spa.html">SPA</a></li>
+            <li><a href="vauceri.html">Poklon vaučeri</a></li>
             <li><a href="galerija.html">Galerija</a></li>
-            <li><a href="vauceri.html">Vaučeri</a></li>
             <li><a href="o-nama.html">O nama</a></li>
             <li><a href="kontakt.html">Kontakt</a></li>
           </ul>
         </nav>
-        <a
-          class="dugme dugme--primarno dugme--malo nav__cta"
-          href="#termin"
-          data-cta="nav-termin"
-          >Proveri termin</a
-        >
         <button
-          class="nav__hamburger"
           type="button"
-          aria-expanded="false"
-          aria-controls="meni"
-          aria-label="Otvori meni"
+          class="dugme dugme--tiho nav__akcija"
+          data-panel
+          aria-controls="panel-termin"
         >
-          <span></span>
+          Proveri termin
+        </button>
+        <button
+          type="button"
+          class="nav__meni"
+          data-meni
+          aria-controls="meni"
+          aria-expanded="false"
+        >
+          <span>Meni</span
+          ><span class="nav__crte" aria-hidden="true"><i></i><i></i></span>
         </button>
       </div>
     </header>
 
-    <div class="meni" id="meni">
-      <a href="index.html" aria-current="page">Početna</a
-      ><a href="smestaj.html">Smeštaj</a><a href="spa.html">SPA</a
-      ><a href="galerija.html">Galerija</a><a href="vauceri.html">Vaučeri</a
-      ><a href="o-nama.html">O nama</a><a href="kucni-red.html">Kućni red</a
-      ><a href="kontakt.html">Kontakt</a>
-      <a class="dugme dugme--primarno" href="#termin" data-cta="meni-termin"
-        >Proveri termin</a
-      >
-      <p class="meni__kontakt">
-        Jezerska bb, Beli Bagrem, Srebrno jezero<br /><a
-          href="tel:+381644500600"
-          >064/4500-600</a
-        >
-        · <a href="mailto:vilastevic@gmail.com">vilastevic@gmail.com</a>
-      </p>
-    </div>
-
-    <div class="mini" id="mini">
-      <span class="mini__tekst">Termin nije izabran</span>
-      <span class="mini__desno">
-        <a class="link link--malo" href="#termin" data-cta="mini-izmeni"
-          >Izmeni</a
-        >
+    <div class="meni tamno" id="meni" data-otvoren="0">
+      <nav aria-label="Sve stranice">
+        <ul class="meni__spisak">
+          <li>
+            <a href="index.html" aria-current="page"><em>01</em>Početna</a>
+          </li>
+          <li>
+            <a href="smestaj.html"><em>02</em>Smeštaj</a>
+          </li>
+          <li>
+            <a href="spa.html"><em>03</em>SPA</a>
+          </li>
+          <li>
+            <a href="vauceri.html"><em>04</em>Poklon vaučeri</a>
+          </li>
+          <li>
+            <a href="galerija.html"><em>05</em>Galerija</a>
+          </li>
+          <li>
+            <a href="o-nama.html"><em>06</em>O nama</a>
+          </li>
+          <li>
+            <a href="kucni-red.html"><em>07</em>Kućni red</a>
+          </li>
+          <li>
+            <a href="kontakt.html"><em>08</em>Kontakt</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="meni__dno">
         <a
-          class="dugme dugme--primarno dugme--malo js-booking"
+          class="dugme"
           href="https://www.booking.com/hotel/rs/vila-stevia.html"
+          data-booking="1"
           target="_blank"
           rel="noopener"
-          data-cta="mini-booking"
-          >Booking</a
+          >Vidi cenu na Booking-u</a
         >
-      </span>
+        <a class="dugme dugme--tiho" href="tel:+381644500600"
+          >Pozovi 064/4500-600</a
+        >
+      </div>
+    </div>
+
+    <div
+      class="panel"
+      id="panel-termin"
+      data-otvoren="0"
+      role="dialog"
+      aria-label="Izbor termina"
+    >
+      <div class="omot panel__unutra">
+        <div class="panel__vrh">
+          <p class="natpis" style="margin: 0">Termin i gosti</p>
+          <button type="button" class="panel__zatvori" data-panel-zatvori>
+            Zatvori
+          </button>
+        </div>
+        <div class="panel__mreza">
+          <div class="kal"></div>
+          <div>
+            <div class="red red--dva">
+              <div class="polje">
+                <label for="p-odrasli">Odrasli</label>
+                <span
+                  class="brojac"
+                  data-brojac="odrasli"
+                  data-min="1"
+                  data-max="20"
+                >
+                  <button type="button" aria-label="Manje odraslih">
+                    &minus;
+                  </button>
+                  <input
+                    id="p-odrasli"
+                    type="number"
+                    min="1"
+                    max="20"
+                    inputmode="numeric"
+                    value="2"
+                  />
+                  <button type="button" aria-label="Više odraslih">+</button>
+                </span>
+              </div>
+              <div class="polje">
+                <label for="p-deca">Deca</label>
+                <span
+                  class="brojac"
+                  data-brojac="deca"
+                  data-min="0"
+                  data-max="10"
+                >
+                  <button type="button" aria-label="Manje dece">&minus;</button>
+                  <input
+                    id="p-deca"
+                    type="number"
+                    min="0"
+                    max="10"
+                    inputmode="numeric"
+                    value="0"
+                  />
+                  <button type="button" aria-label="Više dece">+</button>
+                </span>
+              </div>
+            </div>
+            <div class="razmak-vrh" data-godine hidden>
+              <p class="natpis" style="margin-bottom: 12px">Godine dece</p>
+              <div class="red red--dva" data-godine-polja></div>
+              <p class="polje__pomoc razmak-vrh">
+                Booking traži godine dece da bi prikazao tačnu cenu.
+              </p>
+            </div>
+            <p class="malo tiho razmak-vrh">
+              Deca mogu samo u apartmane A i B. Sobe primaju do dve odrasle
+              osobe.
+            </p>
+          </div>
+        </div>
+        <div class="panel__dno">
+          <p class="panel__zbir" data-panel-zbir></p>
+          <div class="akcije">
+            <a
+              class="dugme"
+              href="https://www.booking.com/hotel/rs/vila-stevia.html"
+              data-booking="1"
+              target="_blank"
+              rel="noopener"
+              >Vidi cenu na Booking-u</a
+            >
+            <a class="veza" href="kontakt.html"
+              >Ili pošaljite upit <span class="veza__strelica">&rarr;</span></a
+            >
+          </div>
+        </div>
+      </div>
     </div>
 
     <main id="glavno">
-      <section class="hero" id="vrh">
-        <div class="hero__mediji">
-          <img
-            class="hero__slika hero__slika--mala"
-            data-slika-mala="vilaDanMala"
-            alt=""
-            width="320"
-            height="331"
-            src="slike/vila-dan-mala.jpg"
-          />
-          <img
-            class="hero__slika hero__slika--puna"
-            data-slika="vilaDan"
-            alt="Vila &amp; SPA Stević: ulaz, dvorište i natpis na fasadi"
-            fetchpriority="high"
-            width="1086"
-            height="1125"
-            src="slike/vila-dan.jpg"
-          />
-          <div class="hero__veo"></div>
+      <section class="hero">
+        <div class="hero__slika">
+          <picture
+            ><source
+              type="image/webp"
+              srcset="slike/hero-usko.webp"
+              media="(max-width: 700px)" />
+            <source type="image/webp" srcset="slike/hero.webp" />
+            <img
+              src="slike/hero.jpg"
+              alt="Vila Stević, ulaz sa stazom i podšišanim šimširom"
+              width="2200"
+              height="1074"
+              fetchpriority="high"
+              decoding="async"
+          /></picture>
         </div>
-        <div class="hero__sadrzaj" data-stagger>
-          <h1 class="hero__naslov anim">
-            <span>Vila &amp; SPA Stević</span><span>Srebrno jezero</span>
+        <div class="hero__vel"></div>
+        <div class="omot hero__sadrzaj">
+          <p class="natpis" style="color: rgba(255, 255, 255, 0.72)">
+            Srebrno jezero &middot; Beli Bagrem
+          </p>
+          <h1 class="hero__naslov">
+            Vila &amp; SPA Stević.<br />Sto metara od vode.
           </h1>
-          <p class="hero__podnaslov anim">
-            Sto metara od jezera, u Belom Bagremu kod Velikog Gradišta.
-          </p>
-          <div class="hero__dugmad anim">
-            <a
-              class="dugme dugme--primarno"
-              href="#termin"
-              data-cta="hero-termin"
-              >Proveri termin i cenu</a
-            >
-            <a
-              class="dugme dugme--belo"
-              href="tel:+381644500600"
-              data-cta="hero-poziv"
-              >Pozovi 064 4500 600</a
-            >
-          </div>
-        </div>
-        <a class="hero__cue" href="#termin" aria-label="Pređi na izbor termina"
-          ><svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.8"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <path d="m6 9 6 6 6-6" /></svg
-        ></a>
-      </section>
-
-      <section class="traka" id="termin" aria-label="Termin i broj gostiju">
-        <div class="traka__unutra">
-          <form class="traka__forma" id="forma-termin" novalidate>
-            <div class="polje">
-              <label for="dolazak">Dolazak</label
-              ><input
-                id="dolazak"
-                name="dolazak"
-                type="date"
-                autocomplete="off"
-              />
-            </div>
-            <div class="polje">
-              <label for="odlazak">Odlazak</label
-              ><input
-                id="odlazak"
-                name="odlazak"
-                type="date"
-                autocomplete="off"
-              />
-            </div>
-            <div class="polje">
-              <label for="odrasli">Odrasli</label
-              ><input
-                id="odrasli"
-                name="odrasli"
-                type="number"
-                inputmode="numeric"
-                min="1"
-                max="30"
-                value="2"
-              />
-            </div>
-            <div class="polje">
-              <label for="deca">Deca</label
-              ><input
-                id="deca"
-                name="deca"
-                type="number"
-                inputmode="numeric"
-                min="0"
-                max="10"
-                value="0"
-              />
-            </div>
-            <div
-              class="traka__godine"
-              id="godine-dece"
-              role="group"
-              aria-labelledby="godine-naslov"
-            >
-              <span class="traka__godine-naslov" id="godine-naslov"
-                >Godine dece:</span
-              >
-            </div>
+          <div class="akcije hero__akcije">
             <button
-              class="traka__posalji"
-              type="submit"
-              tabindex="-1"
-              aria-hidden="true"
+              type="button"
+              class="dugme"
+              data-panel
+              aria-controls="panel-termin"
             >
-              Vidi cenu
+              Proveri termin i cenu
             </button>
-            <div class="polje polje--dugme">
-              <a
-                class="dugme dugme--primarno dugme--puno js-booking"
-                href="https://www.booking.com/hotel/rs/vila-stevia.html"
-                target="_blank"
-                rel="noopener"
-                data-cta="traka-booking"
-                >Vidi cenu na Booking-u</a
-              >
-            </div>
-          </form>
-        </div>
-      </section>
-
-      <section class="sekcija sekcija--kratka" aria-label="Ukratko">
-        <div class="kontejner">
-          <p class="napomena-booking anim">
-            Cena i dostupnost se prikazuju na Booking-u. Za termin koji ne
-            vidite tamo, pozovite nas.
-            <a
-              class="link link--malo"
-              href="tel:+381644500600"
-              data-cta="napomena-poziv"
-              >Pozovite direktno</a
+            <a class="dugme dugme--tiho" href="tel:+381644500600"
+              >Pozovi 064/4500-600</a
             >
-          </p>
-          <ul class="brojke" data-stagger>
-            <li class="brojka anim">
-              <span class="brojka__vrednost">2002.</span>
-              <p class="brojka__opis">Godina osnivanja</p>
-            </li>
-            <li class="brojka anim">
-              <span class="brojka__vrednost">100 m</span>
-              <p class="brojka__opis">Od jezera</p>
-            </li>
-            <li class="brojka anim">
-              <span class="brojka__vrednost">14 + 3</span>
-              <p class="brojka__opis">Soba i apartmana</p>
-            </li>
-            <li class="brojka anim">
-              <span class="brojka__vrednost">1</span>
-              <p class="brojka__opis">Jedini SPA na jezeru</p>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="sekcija sekcija--siva" id="smestaj">
-        <div class="kontejner kontejner--sirok">
-          <div class="sekcija__uvod" data-stagger>
-            <h2 class="naslov anim">3 apartmana. 14 soba.</h2>
-            <p class="podnaslov anim">
-              Prijava od 14.00h, odjava do 10.00h. Parking i wi-fi su besplatni.
-            </p>
           </div>
-          <div class="kartice" data-stagger>
-            <div class="anim">
-              <article class="kartica">
-                <div class="kartica__slika">
-                  <img
-                    data-slika="apartmanA1"
-                    alt="Apartman A, spavaća soba sa francuskim ležajem"
-                    loading="lazy"
-                    decoding="async"
-                    width="1200"
-                    height="1600"
-                    src="slike/apartman-a-1.jpg"
-                  />
-                </div>
-                <div class="kartica__telo">
-                  <h3 class="kartica__naslov">Apartman A</h3>
-                  <p class="kartica__meta">35 m² · prvi sprat</p>
-                  <ul class="kartica__stavke">
-                    <li>Spavaća soba i trpezarija</li>
-                    <li>Kompletno opremljena kuhinja</li>
-                    <li>Do 2 odrasle osobe i 2 dece</li>
-                  </ul>
-                  <p class="kartica__tekst">Izbor za porodice sa decom.</p>
-
-                  <div class="kartica__akcije">
-                    <a
-                      class="dugme dugme--primarno js-booking"
-                      href="https://www.booking.com/hotel/rs/vila-stevia.html"
-                      target="_blank"
-                      rel="noopener"
-                      data-cta="kartica-apartman-a"
-                      >Rezerviši</a
-                    >
-                    <a
-                      class="link js-wa"
-                      href="https://wa.me/381644500600"
-                      target="_blank"
-                      rel="noopener"
-                      data-jedinica="Apartman A (35 m²)"
-                      data-cta="kartica-apartman-a-whatsapp"
-                      >Pitaj na WhatsApp</a
-                    >
-                  </div>
-                </div>
-              </article>
-            </div>
-            <div class="anim">
-              <article class="kartica">
-                <div class="kartica__slika">
-                  <img
-                    data-slika="apartmanB1"
-                    alt="Apartman B, soba sa francuskim ležajem"
-                    loading="lazy"
-                    decoding="async"
-                    width="1200"
-                    height="1600"
-                    src="slike/apartman-b-1.jpg"
-                  />
-                </div>
-                <div class="kartica__telo">
-                  <h3 class="kartica__naslov">Apartman B</h3>
-                  <p class="kartica__meta">30 m² · prvi sprat</p>
-                  <ul class="kartica__stavke">
-                    <li>Soba i trpezarija</li>
-                    <li>Kompletno opremljena kuhinja</li>
-                    <li>Do 2 odrasle osobe i 2 dece</li>
-                  </ul>
-                  <p class="kartica__tekst">Izbor za porodice sa decom.</p>
-
-                  <div class="kartica__akcije">
-                    <a
-                      class="dugme dugme--primarno js-booking"
-                      href="https://www.booking.com/hotel/rs/vila-stevia.html"
-                      target="_blank"
-                      rel="noopener"
-                      data-cta="kartica-apartman-b"
-                      >Rezerviši</a
-                    >
-                    <a
-                      class="link js-wa"
-                      href="https://wa.me/381644500600"
-                      target="_blank"
-                      rel="noopener"
-                      data-jedinica="Apartman B (30 m²)"
-                      data-cta="kartica-apartman-b-whatsapp"
-                      >Pitaj na WhatsApp</a
-                    >
-                  </div>
-                </div>
-              </article>
-            </div>
-            <div class="anim">
-              <article class="kartica">
-                <div class="kartica__slika">
-                  <img
-                    data-slika="apartmanC1"
-                    alt="Apartman C, soba sa bračnim krevetom"
-                    loading="lazy"
-                    decoding="async"
-                    width="1200"
-                    height="1600"
-                    src="slike/apartman-c-1.jpg"
-                  />
-                </div>
-                <div class="kartica__telo">
-                  <h3 class="kartica__naslov">Apartman C</h3>
-                  <p class="kartica__meta">25 m² · prizemlje</p>
-                  <ul class="kartica__stavke">
-                    <li>Soba sa bračnim krevetom</li>
-                    <li>Trpezarija sa kuhinjom</li>
-                    <li>Do 2 odrasle osobe</li>
-                  </ul>
-                  <p class="kartica__tekst">Za dvoje, sa svojom kuhinjom.</p>
-
-                  <div class="kartica__akcije">
-                    <a
-                      class="dugme dugme--primarno js-booking"
-                      href="https://www.booking.com/hotel/rs/vila-stevia.html"
-                      target="_blank"
-                      rel="noopener"
-                      data-cta="kartica-apartman-c"
-                      >Rezerviši</a
-                    >
-                    <a
-                      class="link js-wa"
-                      href="https://wa.me/381644500600"
-                      target="_blank"
-                      rel="noopener"
-                      data-jedinica="Apartman C (25 m²)"
-                      data-cta="kartica-apartman-c-whatsapp"
-                      >Pitaj na WhatsApp</a
-                    >
-                  </div>
-                </div>
-              </article>
-            </div>
-            <div class="anim">
-              <article class="kartica kartica--sobe">
-                <div class="kartica__slika">
-                  <img
-                    data-slika="bracni3"
-                    alt="Soba sa bračnim krevetom, krevet uz prozor"
-                    loading="lazy"
-                    decoding="async"
-                    width="1200"
-                    height="1600"
-                    src="slike/soba-bracni-3.jpg"
-                  />
-                </div>
-                <div class="kartica__telo">
-                  <h3 class="kartica__naslov">Sobe</h3>
-                  <p class="kartica__meta">12 do 20 m² · sa terasom</p>
-                  <ul class="kartica__stavke">
-                    <li>Jednokrevetne, dvokrevetne i sa bračnim krevetom</li>
-                    <li>Kupatilo, TV, mini bar, klima, wi-fi</li>
-                    <li>Do 2 osobe po sobi</li>
-                  </ul>
-                  <p class="kartica__tekst">
-                    Vi birate termin. Raspored soba dogovaramo po dolasku.
-                  </p>
-                  <p class="kartica__napomena" role="status">
-                    Za goste sa decom preporučujemo apartmane A i B.
-                  </p>
-                  <div class="kartica__akcije">
-                    <a
-                      class="dugme dugme--primarno js-booking"
-                      href="https://www.booking.com/hotel/rs/vila-stevia.html"
-                      target="_blank"
-                      rel="noopener"
-                      data-cta="kartica-sobe"
-                      >Rezerviši</a
-                    >
-                    <a
-                      class="link js-wa"
-                      href="https://wa.me/381644500600"
-                      target="_blank"
-                      rel="noopener"
-                      data-jedinica="soba"
-                      data-cta="kartica-sobe-whatsapp"
-                      >Pitaj na WhatsApp</a
-                    >
-                  </div>
-                </div>
-              </article>
-            </div>
-          </div>
-          <p class="smestaj__napomena anim">
-            Porodice sa decom idu u apartmane A i B. Sobe se raspoređuju po
-            dolasku.
-            <a class="link" href="smestaj.html" data-cta="pocetna-smestaj"
-              >Sve o smeštaju</a
-            >
+          <p class="hero__meta">
+            <span>Više od dve decenije</span><span>3 apartmana i 14 soba</span
+            ><span>SPA centar</span>
           </p>
         </div>
       </section>
-
-      <section class="sekcija" id="fotografije">
-        <div class="kontejner kontejner--sirok">
-          <div class="sekcija__uvod" data-stagger>
-            <h2 class="naslov anim">Pogledajte izbliza.</h2>
-            <p class="podnaslov anim">Objekat, apartmani, sobe i SPA.</p>
-          </div>
-          <div class="galerija" id="galerija" data-stagger>
-            <figure class="anim" data-svetlo="pocetna">
-              <img
-                data-slika="vilaNoc"
-                alt="Vila &amp; SPA Stević uveče, osvetljen ulaz i dvorište"
-                loading="lazy"
-                decoding="async"
-                width="1086"
-                height="1243"
-                src="slike/vila-noc.jpg"
-              />
-            </figure>
-            <figure class="anim" data-svetlo="pocetna">
-              <img
-                data-slika="spa4"
-                alt="SPA centar, đakuzi sa plavim osvetljenjem"
-                loading="lazy"
-                decoding="async"
-                width="1600"
-                height="1200"
-                src="slike/spa-4.jpg"
-              />
-            </figure>
-            <figure class="anim" data-svetlo="pocetna">
-              <img
-                data-slika="apartmanA1"
-                alt="Apartman A, spavaća soba sa francuskim ležajem"
-                loading="lazy"
-                decoding="async"
-                width="1200"
-                height="1600"
-                src="slike/apartman-a-1.jpg"
-              />
-            </figure>
-            <figure class="anim" data-svetlo="pocetna">
-              <img
-                data-slika="bracni3"
-                alt="Soba sa bračnim krevetom, krevet uz prozor"
-                loading="lazy"
-                decoding="async"
-                width="1200"
-                height="1600"
-                src="slike/soba-bracni-3.jpg"
-              />
-            </figure>
-            <figure class="anim" data-svetlo="pocetna">
-              <img
-                data-slika="spa9"
-                alt="SPA centar, finska sauna"
-                loading="lazy"
-                decoding="async"
-                width="1600"
-                height="1062"
-                src="slike/spa-9.jpg"
-              />
-            </figure>
-            <figure class="anim" data-svetlo="pocetna">
-              <img
-                data-slika="apartmanC3"
-                alt="Apartman C, kuhinja"
-                loading="lazy"
-                decoding="async"
-                width="1200"
-                height="1600"
-                src="slike/apartman-c-3.jpg"
-              />
-            </figure>
-            <figure class="anim" data-svetlo="pocetna">
-              <img
-                data-slika="spa7"
-                alt="SPA centar, slana soba"
-                loading="lazy"
-                decoding="async"
-                width="1280"
-                height="960"
-                src="slike/spa-7.jpg"
-              />
-            </figure>
-            <figure class="anim" data-svetlo="pocetna">
-              <img
-                data-slika="dronDalje"
-                alt="Vila &amp; SPA Stević iz vazduha, krov i dvorište"
-                loading="lazy"
-                decoding="async"
-                width="1600"
-                height="900"
-                src="slike/dron-dalje.jpg"
-              />
-            </figure>
-          </div>
-          <div class="galerija__jos">
-            <a class="link" href="galerija.html" data-cta="pocetna-galerija"
-              >Sve fotografije</a
-            >
-          </div>
-        </div>
-      </section>
-
-      <section class="sekcija sekcija--tamna spa" id="spa">
-        <div class="kontejner">
-          <div class="sekcija__uvod" data-stagger>
-            <h2 class="naslov anim">Jedini SPA na jezeru.</h2>
-            <p class="podnaslov anim">
-              Slana soba, finska sauna, đakuzi i masaža. Radno vreme 12 do 21h,
-              termini se zakazuju na recepciji.
-            </p>
-          </div>
-        </div>
-        <div class="spa__pin">
-          <div class="spa__slika-omot">
-            <figure class="spa__slika">
-              <img
-                class="aktivna"
-                data-slika="spa7"
-                alt="SPA centar, slana soba"
-                loading="lazy"
-                decoding="async"
-                width="1280"
-                height="960"
-                src="slike/spa-7.jpg"
-              />
-              <img
-                data-slika="spa9"
-                alt="SPA centar, finska sauna"
-                loading="lazy"
-                decoding="async"
-                width="1600"
-                height="1062"
-                src="slike/spa-9.jpg"
-              />
-              <img
-                data-slika="spa4"
-                alt="SPA centar, đakuzi sa plavim osvetljenjem"
-                loading="lazy"
-                decoding="async"
-                width="1600"
-                height="1200"
-                src="slike/spa-4.jpg"
-              />
-            </figure>
-          </div>
-          <div class="spa__blokovi">
-            <article class="spa__blok aktivan">
-              <figure>
-                <img
-                  data-slika="spa7"
-                  alt="SPA centar, slana soba"
-                  loading="lazy"
-                  decoding="async"
-                  width="1280"
-                  height="960"
-                  src="slike/spa-7.jpg"
-                />
-              </figure>
-              <h3>Slana soba</h3>
-              <p>Tiho, toplo i sporo. Sedite, dišete i ne radite ništa.</p>
-            </article>
-            <article class="spa__blok">
-              <figure>
-                <img
-                  data-slika="spa9"
-                  alt="SPA centar, finska sauna"
-                  loading="lazy"
-                  decoding="async"
-                  width="1600"
-                  height="1062"
-                  src="slike/spa-9.jpg"
-                />
-              </figure>
-              <h3>Finska sauna</h3>
+      <section class="odeljak">
+        <div class="omot">
+          <div class="blok blok--vrh">
+            <div class="anim">
+              <p class="natpis">Gde ste</p>
+              <h2 class="veliki">Stotinu koraka<br />do jezera.</h2>
+            </div>
+            <div class="anim">
               <p>
-                Toplota koja zagreva do kosti. Posle nje prija vazduh sa jezera.
+                Vila je u Belom Bagremu, na Srebrnom jezeru kod Velikog
+                Gradišta. Soba se uzima od 14h i napušta do 10h narednog dana.
+                Recepcija radi od sedam ujutru do deset uveče, a na vratima vas
+                najčešće dočeka Zoran.
               </p>
-            </article>
-            <article class="spa__blok">
-              <figure>
-                <img
-                  data-slika="spa4"
-                  alt="SPA centar, đakuzi sa plavim osvetljenjem"
-                  loading="lazy"
-                  decoding="async"
-                  width="1600"
-                  height="1200"
-                  src="slike/spa-4.jpg"
-                />
-              </figure>
-              <h3>Đakuzi i masaža</h3>
-              <p>Topla voda opušta ramena. Masaža za kraj dana.</p>
-            </article>
+              <p class="razmak-vrh">
+                <a class="veza" href="kontakt.html"
+                  >Kako da stignete
+                  <span class="veza__strelica">&rarr;</span></a
+                >
+              </p>
+            </div>
           </div>
-        </div>
-        <div class="spa__napomena anim">
-          <p>Termine dogovarate na recepciji kada se prijavite.</p>
-          <a class="link" href="spa.html" data-cta="pocetna-spa"
-            >Više o SPA centru</a
-          >
+          <dl class="cinjenice razmak-vrh-veliki anim">
+            <div>
+              <dt>Prijava</dt>
+              <dd>od 14.00</dd>
+            </div>
+            <div>
+              <dt>Odjava</dt>
+              <dd>do 10.00</dd>
+            </div>
+            <div>
+              <dt>Recepcija</dt>
+              <dd>07 do 22</dd>
+            </div>
+            <div>
+              <dt>Parking i wi-fi</dt>
+              <dd>bez naplate</dd>
+            </div>
+          </dl>
         </div>
       </section>
+      <section class="odeljak odeljak--alt" id="smestaj">
+        <div class="omot">
+          <div class="uvod anim">
+            <p class="natpis">Smeštaj</p>
+            <h2 class="uvod__naslov">
+              Tri apartmana<br />i četiri vrste soba.
+            </h2>
+            <p class="uvod__lead">
+              Svaka jedinica ima kupatilo, klimu, televizor i wi-fi. Sobe imaju
+              terasu, apartmani kuhinju. Vi birate termin, a raspored po sobama
+              pravimo mi, po dolasku.
+            </p>
+          </div>
 
-      <section class="sekcija" id="o-nama">
-        <div class="kontejner kontejner--sirok">
-          <div class="onama__mreza">
-            <div class="onama__slika anim">
-              <img
-                data-slika="vilaNoc"
-                alt="Vila &amp; SPA Stević uveče, osvetljen ulaz i dvorište"
-                loading="lazy"
-                decoding="async"
-                width="1086"
-                height="1243"
-                src="slike/vila-noc.jpg"
-              />
-            </div>
-            <div class="onama__tekst" data-stagger>
-              <h2 class="naslov naslov--kolona anim">
-                Jedna porodica. Hiljade uspomena.
-              </h2>
-              <div class="proza anim" style="margin-top: 24px">
-                <p class="uvodni">
-                  Više od dve decenije poverenja. Gost po gost, osmeh po osmeh,
-                  višnja po višnja.
-                </p>
-                <p>
-                  Godinama gradimo svoju priču na jednostavnim vrednostima:
-                  ljubaznosti, poverenju, poštovanju i iskrenom odnosu prema
-                  svakom gostu.
-                </p>
+          <div class="blok blok--usko">
+            <figure class="anim-foto">
+              <div class="foto foto--45">
+                <picture
+                  ><source
+                    type="image/webp"
+                    srcset="slike/apartman-a-1.webp"
+                    sizes="(min-width: 900px) 44vw, 92vw" />
+                  <img
+                    src="slike/apartman-a-1.jpg"
+                    alt="Spavaća soba apartmana A"
+                    width="1200"
+                    height="1500"
+                    loading="lazy"
+                    decoding="async"
+                /></picture>
               </div>
-              <a class="link anim" href="o-nama.html" data-cta="pocetna-o-nama"
-                >Pročitajte našu priču</a
-              >
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="sekcija sekcija--siva" id="lokacija">
-        <div class="kontejner kontejner--sirok">
-          <div class="lokacija__mreza">
-            <div data-stagger>
-              <h2 class="naslov naslov--kolona anim">100 metara od jezera.</h2>
-              <p class="podnaslov anim">
-                Vila je u naselju Beli Bagrem, na Srebrnom jezeru kod Velikog
-                Gradišta.
+            </figure>
+            <div class="anim">
+              <h3 class="srednji">Apartmani</h3>
+              <p class="tiho razmak-vrh">
+                Kuhinja, trpezarija i mesto za dvoje dece u apartmanima A i B.
+                Apartmani nemaju terasu.
               </p>
-              <dl class="lokacija__podaci anim">
-                <dt>Adresa</dt>
-                <dd>Jezerska bb, Beli Bagrem, Srebrno jezero</dd>
-                <dt>Iz Beograda</dt>
-                <dd>
-                  <span class="tbd" data-podatak="putBeograd">1h 30m</span>
-                </dd>
-                <dt>Iz Požarevca</dt>
-                <dd>
-                  <span class="tbd" data-podatak="putPozarevac">35m</span>
-                </dd>
-              </dl>
-            </div>
-            <div class="mapa anim">
-              <img
-                data-slika="dronBlizu"
-                alt="Vila &amp; SPA Stević iz vazduha, ulaz i dvorište"
-                loading="lazy"
-                decoding="async"
-                width="2560"
-                height="1440"
-                src="slike/dron-blizu.jpg"
-              />
-              <div class="mapa__veo"></div>
-              <div class="mapa__sadrzaj">
-                <p class="mapa__adresa">
-                  <svg
-                    class="mapa__pin"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"
-                    />
-                    <circle cx="12" cy="10" r="2.5" /></svg
-                  ><strong>Jezerska bb, Beli Bagrem</strong>Srebrno jezero,
-                  Veliko Gradište
-                </p>
-                <a
-                  class="dugme dugme--belo"
-                  href="google.com/maps/place/ViLa+%26+SPA+STEVIĆ/@44.764936,21.4796581,800m/data=!3m2!1e3!4b1!4m9!3m8!1s0x47505589f6d74907:0x3c22963df602519a!5m2!4m1!1i2!8m2!3d44.7649322!4d21.482233!16s%2Fg%2F119wqx9x7?entry=ttu&g_ep=EgoyMDI2MDkwNi4wIKXMDSoASAFQAw%3D%3D"
-                  rel="noopener"
-                  data-cta="lokacija-mape"
-                  >Otvori u mapama</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="sekcija" id="vauceri">
-        <div class="kontejner kontejner--sirok">
-          <div class="vauceri__mreza">
-            <div class="vaucer-slika anim">
-              <img
-                data-slika="vaucer"
-                alt="Poklon vaučer Vila &amp; SPA Stević"
-                loading="lazy"
-                decoding="async"
-                width="1536"
-                height="1024"
-                src="slike/vaucer.jpg"
-              />
-            </div>
-            <div data-stagger>
-              <h2 class="naslov naslov--kolona anim">
-                Poklon vaučer. Bez roka.
-              </h2>
-              <p class="podnaslov anim">
-                Poklonite boravak u vili. Vaučer važi bez roka trajanja. Sadržaj
-                i uplatu dogovarate direktno sa vilom.
-              </p>
-              <div
-                class="zaglavlje__dugmad anim"
-                style="justify-content: flex-start"
-              >
-                <a
-                  class="dugme dugme--primarno"
-                  href="vauceri.html#forma"
-                  data-cta="pocetna-vaucer-upit"
-                  >Pošalji upit za vaučer</a
-                >
-                <a class="link" href="vauceri.html" data-cta="pocetna-vaucer"
-                  >Kako vaučer radi</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="sekcija sekcija--tamna" id="kontakt">
-        <div class="kontejner kontejner--sirok">
-          <div class="kontakt__mreza">
-            <div data-stagger>
-              <h2 class="naslov naslov--kolona anim">
-                Jedan broj. Tri načina.
-              </h2>
-              <p class="podnaslov anim">
-                064/4500-600 radi za poziv, WhatsApp i Viber.
-              </p>
-              <div class="kontakt__kanali" data-stagger>
-                <a
-                  class="kanal anim"
-                  href="tel:+381644500600"
-                  data-cta="kontakt-poziv"
-                >
-                  <span class="kanal__ikona"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.8"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      aria-hidden="true"
+              <div class="razmak-vrh">
+                <ul class="spisak">
+                  <li>
+                    <a class="stavka" href="smestaj.html#apartman-a"
+                      ><span class="stavka__broj">01</span
+                      ><span class="stavka__ime">Apartman A</span
+                      ><span class="stavka__meta"
+                        >35 m² &middot; 2 odrasle osobe i dvoje dece</span
+                      ></a
                     >
-                      <path
-                        d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"
-                      /></svg
-                  ></span>
-                  <span class="kanal__tekst"
-                    ><strong>Pozovi</strong><span>064/4500-600</span></span
-                  >
-                </a>
-                <a
-                  class="kanal anim js-wa"
-                  href="https://wa.me/381644500600"
-                  target="_blank"
-                  rel="noopener"
-                  data-cta="kontakt-whatsapp"
-                  ><span class="kanal__ikona"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.8"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      aria-hidden="true"
+                  </li>
+                  <li>
+                    <a class="stavka" href="smestaj.html#apartman-b"
+                      ><span class="stavka__broj">02</span
+                      ><span class="stavka__ime">Apartman B</span
+                      ><span class="stavka__meta"
+                        >30 m² &middot; 2 odrasle osobe i dvoje dece</span
+                      ></a
                     >
-                      <path
-                        d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-5A8 8 0 1 1 21 12z"
-                      /></svg></span
-                  ><span class="kanal__tekst"
-                    ><strong>WhatsApp</strong
-                    ><span>Poruka na 064/4500-600</span></span
-                  ></a
-                >
-                <a
-                  class="kanal anim"
-                  href="viber://chat?number=%2B381644500600"
-                  data-cta="kontakt-viber"
-                >
-                  <span class="kanal__ikona"
-                    ><svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.8"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      aria-hidden="true"
+                  </li>
+                  <li>
+                    <a class="stavka" href="smestaj.html#apartman-c"
+                      ><span class="stavka__broj">03</span
+                      ><span class="stavka__ime">Apartman C</span
+                      ><span class="stavka__meta"
+                        >25 m² &middot; 2 odrasle osobe</span
+                      ></a
                     >
-                      <path
-                        d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-5A8 8 0 1 1 21 12z"
-                      />
-                      <path d="M8.5 12h.01M12 12h.01M15.5 12h.01" /></svg
-                  ></span>
-                  <span class="kanal__tekst"
-                    ><strong>Viber</strong><span>+381 64 4500 600</span></span
-                  >
-                </a>
+                  </li>
+                </ul>
               </div>
-              <p class="kontakt__mejl anim">
-                Ili mejlom:
-                <a
-                  class="link"
-                  href="mailto:vilastevic@gmail.com"
-                  data-cta="kontakt-mejl"
-                  >vilastevic@gmail.com</a
-                >
-              </p>
-            </div>
-            <div class="forma-kartica anim">
-              <h3 class="forma-kartica__naslov">Pošaljite upit</h3>
-              <form class="forma js-forma" data-vrsta="kontakt" novalidate>
-                <div class="polje">
-                  <label for="k-ime">Ime i prezime</label
-                  ><input
-                    id="k-ime"
-                    name="ime"
-                    type="text"
-                    required
-                    autocomplete="name"
-                  />
-                </div>
-                <div class="polje">
-                  <label for="k-telefon">Telefon</label
-                  ><input
-                    id="k-telefon"
-                    name="telefon"
-                    type="tel"
-                    autocomplete="tel"
-                  />
-                </div>
-                <div class="polje polje--puno">
-                  <label for="k-mejl">Mejl</label
-                  ><input
-                    id="k-mejl"
-                    name="mejl"
-                    type="email"
-                    autocomplete="email"
-                  />
-                </div>
-                <div class="polje">
-                  <label for="k-dolazak">Dolazak (opciono)</label
-                  ><input id="k-dolazak" name="dolazak" type="date" />
-                </div>
-                <div class="polje">
-                  <label for="k-odlazak">Odlazak (opciono)</label
-                  ><input id="k-odlazak" name="odlazak" type="date" />
-                </div>
-                <div class="polje polje--puno">
-                  <label for="k-poruka">Poruka</label
-                  ><textarea
-                    id="k-poruka"
-                    name="poruka"
-                    rows="4"
-                    required
-                  ></textarea>
-                </div>
-                <div class="polje polje--puno pcelinjak" aria-hidden="true">
-                  <label for="k-website">Ne popunjavajte ovo polje</label
-                  ><input
-                    id="k-website"
-                    name="website"
-                    type="text"
-                    tabindex="-1"
-                    autocomplete="off"
-                  />
-                </div>
-                <div class="forma__dugmad">
-                  <button
-                    class="dugme dugme--primarno"
-                    type="submit"
-                    data-kanal="mejl"
-                    data-cta="kontakt-forma-mejl"
-                  >
-                    Pošalji upit
-                  </button>
-                  <button
-                    class="dugme dugme--sekundarno"
-                    type="submit"
-                    data-kanal="wa"
-                    data-cta="kontakt-forma-whatsapp"
-                  >
-                    Ili preko WhatsApp-a
-                  </button>
-                </div>
-                <p class="forma__napomena">
-                  Upit stiže vlasniku na mejl. Odgovor dobijate na telefon ili
-                  mejl koji ste ostavili, obično isti dan. Ako vam se žuri,
-                  pozovite 064/4500-600.
-                </p>
-                <p class="forma__status" role="status" aria-live="polite"></p>
-              </form>
             </div>
           </div>
-        </div>
-      </section>
 
-      <section class="sekcija" id="pitanja">
-        <div class="kontejner">
-          <div class="sekcija__uvod" data-stagger>
-            <h2 class="naslov anim">Česta pitanja.</h2>
+          <div class="blok blok--usko blok--obrnut">
+            <figure class="anim-foto">
+              <div class="foto foto--45">
+                <picture
+                  ><source
+                    type="image/webp"
+                    srcset="slike/soba-bracni-1.webp"
+                    sizes="(min-width: 900px) 44vw, 92vw" />
+                  <img
+                    src="slike/soba-bracni-1.jpg"
+                    alt="Soba sa bračnim krevetom"
+                    width="1200"
+                    height="1500"
+                    loading="lazy"
+                    decoding="async"
+                /></picture>
+              </div>
+            </figure>
+            <div class="anim">
+              <h3 class="srednji">Sobe</h3>
+              <p class="tiho razmak-vrh">
+                Sve sobe imaju terasu sa stolom i stolicama, kupatilo, mini bar
+                i centralno grejanje.
+              </p>
+              <div class="razmak-vrh">
+                <ul class="spisak">
+                  <li>
+                    <a class="stavka" href="smestaj.html#soba-jednokrevetna"
+                      ><span class="stavka__broj">04</span
+                      ><span class="stavka__ime">Jednokrevetna soba</span
+                      ><span class="stavka__meta"
+                        >12 m² &middot; 2 osobe</span
+                      ></a
+                    >
+                  </li>
+                  <li>
+                    <a class="stavka" href="smestaj.html#soba-dvokrevetna"
+                      ><span class="stavka__broj">05</span
+                      ><span class="stavka__ime">Dvokrevetna soba</span
+                      ><span class="stavka__meta"
+                        >15 m² &middot; 2 osobe</span
+                      ></a
+                    >
+                  </li>
+                  <li>
+                    <a class="stavka" href="smestaj.html#soba-trokrevetna"
+                      ><span class="stavka__broj">06</span
+                      ><span class="stavka__ime">Trokrevetna soba</span
+                      ><span class="stavka__meta"
+                        >20 m² &middot; Tri razdvojena ležaja</span
+                      ></a
+                    >
+                  </li>
+                  <li>
+                    <a class="stavka" href="smestaj.html#soba-bracni"
+                      ><span class="stavka__broj">07</span
+                      ><span class="stavka__ime">Soba sa bračnim krevetom</span
+                      ><span class="stavka__meta"
+                        >15 m² &middot; 2 osobe</span
+                      ></a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <div class="faq" data-stagger>
-            <details class="anim">
-              <summary>Kada je prijava, a kada odjava?</summary>
-              <p class="faq__odgovor">
-                Prijava je od 14.00h, odjava do 10.00h. Sobe se izdaju
-                isključivo preko recepcije.
-              </p>
-            </details>
-            <details class="anim">
-              <summary>Ima li parking?</summary>
-              <p class="faq__odgovor">Da. Parking je besplatan.</p>
-            </details>
-            <details class="anim">
-              <summary>Ima li wi-fi?</summary>
-              <p class="faq__odgovor">
-                Da. Wi-fi je besplatan, u sobama i apartmanima.
-              </p>
-            </details>
-            <details class="anim">
-              <summary>Dolazimo sa decom. Gde smo smešteni?</summary>
-              <p class="faq__odgovor">
-                U apartmanu A ili B. Oba primaju dve odrasle osobe i dvoje dece.
-                Apartman C je za dve osobe, a sobe su za goste bez dece.
-              </p>
-            </details>
-            <details class="anim">
-              <summary>Da li su kućni ljubimci dozvoljeni?</summary>
-              <p class="faq__odgovor">
-                Ne. Objekat nije registrovan za kućne ljubimce.
-              </p>
-            </details>
-            <details class="anim">
-              <summary>Kako se zakazuje SPA?</summary>
-              <p class="faq__odgovor">
-                Na recepciji, kada se prijavite. SPA radi od 12 do 21h i ima
-                slanu sobu, finsku saunu, đakuzi i masažu.
-              </p>
-            </details>
-            <details class="anim">
-              <summary>Kako se rezerviše?</summary>
-              <p class="faq__odgovor">
-                Unesite termin i broj gostiju na vrhu strane i pogledajte cenu
-                na Booking-u. Ako termin ne vidite tamo, pozovite 064/4500-600,
-                pišite na WhatsApp ili Viber, ili pošaljite upit mejlom.
-              </p>
-            </details>
-          </div>
-          <p class="smestaj__napomena anim">
-            Sva pravila boravka su na jednom mestu.
-            <a class="link" href="kucni-red.html" data-cta="pocetna-kucni-red"
-              >Kućni red</a
-            >
-          </p>
-        </div>
-      </section>
 
-      <section class="cta-kraj" aria-labelledby="cta-naslov">
-        <img
-          data-slika="apartmanA1"
-          alt="Apartman A, spavaća soba sa francuskim ležajem"
-          loading="lazy"
-          decoding="async"
-          width="1200"
-          height="1600"
-          src="slike/apartman-a-1.jpg"
-        />
-        <div class="cta-kraj__veo"></div>
-        <div class="cta-kraj__sadrzaj" data-stagger>
-          <h2 class="naslov anim" id="cta-naslov">
-            Pogledajte cenu za svoj termin.
-          </h2>
-          <p class="podnaslov anim">
-            Cena i slobodni dani su na Booking-u. Za sve ostalo pozovite.
-          </p>
-          <div class="cta-kraj__dugmad anim">
+          <div class="akcije razmak-vrh-veliki anim">
+            <a class="dugme" href="smestaj.html">Sve o smeštaju</a>
             <a
-              class="dugme dugme--primarno js-booking"
+              class="veza"
               href="https://www.booking.com/hotel/rs/vila-stevia.html"
+              data-booking="1"
               target="_blank"
               rel="noopener"
-              data-cta="kraj-booking"
-              >Vidi cenu na Booking-u</a
+              >Cena za vaš termin na Booking-u
+              <span class="veza__strelica">&rarr;</span></a
             >
-            <a
-              class="dugme dugme--belo"
-              href="tel:+381644500600"
-              data-cta="kraj-poziv"
-              >Pozovi 064 4500 600</a
+          </div>
+        </div>
+      </section>
+      <section class="odeljak tamno" id="spa">
+        <div class="omot">
+          <div class="uvod anim">
+            <p class="natpis">SPA centar</p>
+            <h2 class="uvod__naslov">
+              Slana soba, sauna,<br />đakuzi, masaža.
+            </h2>
+            <p class="uvod__lead">
+              Spa karta traje oko dva sata i ide ovim redom: trideset minuta u
+              slanoj sobi, tri puta po petnaest u finskoj sauni, pa trideset
+              minuta u đakuziju. Masaža se zakazuje posebno.
+            </p>
+          </div>
+          <div class="blok blok--siroko">
+            <figure class="anim-foto">
+              <div class="foto foto--45">
+                <picture
+                  ><source
+                    type="image/webp"
+                    srcset="slike/spa-hodnik.webp"
+                    sizes="(min-width: 900px) 52vw, 92vw" />
+                  <img
+                    src="slike/spa-hodnik.jpg"
+                    alt="Prolaz kroz SPA centar, drvena obloga i zelenilo"
+                    width="1100"
+                    height="1376"
+                    loading="lazy"
+                    decoding="async"
+                /></picture>
+              </div>
+            </figure>
+            <div class="anim">
+              <div class="karte karte--tesno">
+                <div class="karta anim">
+                  <span class="karta__broj">30 minuta</span
+                  ><span class="karta__ime">Slana soba</span>
+                </div>
+                <div class="karta anim">
+                  <span class="karta__broj">3 × 15 minuta</span
+                  ><span class="karta__ime">Finska sauna</span>
+                </div>
+                <div class="karta anim">
+                  <span class="karta__broj">30 minuta</span
+                  ><span class="karta__ime">Đakuzi</span>
+                </div>
+                <div class="karta anim">
+                  <span class="karta__broj">60 minuta</span
+                  ><span class="karta__ime">Relax masaža celog tela</span>
+                </div>
+              </div>
+              <p class="malo tiho razmak-vrh">
+                Termini se dogovaraju na recepciji, po dolasku. Deca mlađa od 15
+                godina mogu u slanu sobu, uz pratnju roditelja.
+              </p>
+              <div class="akcije razmak-vrh">
+                <a class="dugme dugme--svetlo" href="spa.html"
+                  >Otvori SPA stranicu</a
+                >
+                <a class="veza" href="#" data-wa="" data-wa-tema="spa"
+                  >Pitaj na WhatsApp-u
+                  <span class="veza__strelica">&rarr;</span></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="odeljak">
+        <div class="omot">
+          <div class="blok blok--vrh">
+            <div class="anim">
+              <p class="natpis">Fotografije</p>
+              <h2 class="veliki">Kuća, sobe, SPA.</h2>
+            </div>
+            <div class="anim">
+              <p class="tiho">
+                Objekat, apartmani, sobe i SPA centar. Kliknite na fotografiju
+                za veći prikaz.
+              </p>
+              <p class="razmak-vrh">
+                <a class="veza" href="galerija.html"
+                  >Cela galerija <span class="veza__strelica">&rarr;</span></a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="omot omot--pun razmak-vrh-veliki">
+          <div class="niz">
+            <figure class="anim-foto">
+              <button
+                type="button"
+                class="plocica"
+                data-lb="pocetna"
+                data-puna="slike/vila-dan.jpg"
+              >
+                <picture
+                  ><source
+                    type="image/webp"
+                    srcset="slike/vila-dan.webp"
+                    sizes="(min-width: 900px) 24vw, 62vw" />
+                  <img
+                    src="slike/vila-dan.jpg"
+                    alt="Vila Stević danju"
+                    loading="lazy"
+                    decoding="async"
+                /></picture>
+              </button>
+            </figure>
+            <figure class="anim-foto">
+              <button
+                type="button"
+                class="plocica"
+                data-lb="pocetna"
+                data-puna="slike/soba-bracni-1.jpg"
+              >
+                <picture
+                  ><source
+                    type="image/webp"
+                    srcset="slike/soba-bracni-1.webp"
+                    sizes="(min-width: 900px) 24vw, 62vw" />
+                  <img
+                    src="slike/soba-bracni-1.jpg"
+                    alt="Soba sa bračnim krevetom"
+                    loading="lazy"
+                    decoding="async"
+                /></picture>
+              </button>
+            </figure>
+            <figure class="anim-foto">
+              <button
+                type="button"
+                class="plocica"
+                data-lb="pocetna"
+                data-puna="slike/spa-djakuzi.jpg"
+              >
+                <picture
+                  ><source
+                    type="image/webp"
+                    srcset="slike/spa-djakuzi.webp"
+                    sizes="(min-width: 900px) 24vw, 62vw" />
+                  <img
+                    src="slike/spa-djakuzi.jpg"
+                    alt="Đakuzi u SPA centru"
+                    loading="lazy"
+                    decoding="async"
+                /></picture>
+              </button>
+            </figure>
+            <figure class="anim-foto">
+              <button
+                type="button"
+                class="plocica"
+                data-lb="pocetna"
+                data-puna="slike/apartman-c-3.jpg"
+              >
+                <picture
+                  ><source
+                    type="image/webp"
+                    srcset="slike/apartman-c-3.webp"
+                    sizes="(min-width: 900px) 24vw, 62vw" />
+                  <img
+                    src="slike/apartman-c-3.jpg"
+                    alt="Detalj u apartmanu C"
+                    loading="lazy"
+                    decoding="async"
+                /></picture>
+              </button>
+            </figure>
+            <figure class="anim-foto">
+              <button
+                type="button"
+                class="plocica"
+                data-lb="pocetna"
+                data-puna="slike/soba-trokrevetna-2.jpg"
+              >
+                <picture
+                  ><source
+                    type="image/webp"
+                    srcset="slike/soba-trokrevetna-2.webp"
+                    sizes="(min-width: 900px) 24vw, 62vw" />
+                  <img
+                    src="slike/soba-trokrevetna-2.jpg"
+                    alt="Natkrivena terasa"
+                    loading="lazy"
+                    decoding="async"
+                /></picture>
+              </button>
+            </figure>
+            <figure class="anim-foto">
+              <button
+                type="button"
+                class="plocica"
+                data-lb="pocetna"
+                data-puna="slike/spa-sauna.jpg"
+              >
+                <picture
+                  ><source
+                    type="image/webp"
+                    srcset="slike/spa-sauna.webp"
+                    sizes="(min-width: 900px) 24vw, 62vw" />
+                  <img
+                    src="slike/spa-sauna.jpg"
+                    alt="Finska sauna"
+                    loading="lazy"
+                    decoding="async"
+                /></picture>
+              </button>
+            </figure>
+            <figure class="anim-foto">
+              <button
+                type="button"
+                class="plocica"
+                data-lb="pocetna"
+                data-puna="slike/apartman-b-1.jpg"
+              >
+                <picture
+                  ><source
+                    type="image/webp"
+                    srcset="slike/apartman-b-1.webp"
+                    sizes="(min-width: 900px) 24vw, 62vw" />
+                  <img
+                    src="slike/apartman-b-1.jpg"
+                    alt="Apartman B"
+                    loading="lazy"
+                    decoding="async"
+                /></picture>
+              </button>
+            </figure>
+            <figure class="anim-foto">
+              <button
+                type="button"
+                class="plocica"
+                data-lb="pocetna"
+                data-puna="slike/soba-jednokrevetna-3.jpg"
+              >
+                <picture
+                  ><source
+                    type="image/webp"
+                    srcset="slike/soba-jednokrevetna-3.webp"
+                    sizes="(min-width: 900px) 24vw, 62vw" />
+                  <img
+                    src="slike/soba-jednokrevetna-3.jpg"
+                    alt="Terasa sa zelenilom"
+                    loading="lazy"
+                    decoding="async"
+                /></picture>
+              </button>
+            </figure>
+          </div>
+        </div>
+      </section>
+      <section class="odeljak odeljak--alt" id="vauceri">
+        <div class="omot">
+          <div class="uvod anim">
+            <p class="natpis natpis--mesing">Poklon vaučeri</p>
+            <h2 class="uvod__naslov">
+              Za rođendan, godišnjicu<br />ili bez povoda.
+            </h2>
+            <p class="uvod__lead">
+              Dve gotove kombinacije i treća koju sastavljate sami. Vaučer
+              poručujete telefonom ili preko forme, a instrukcije za uplatu
+              šaljemo posle dogovora.
+            </p>
+          </div>
+          <div class="blok">
+            <div class="vaucer anim">
+              <div class="vaucer__zaglavlje">
+                <h3 class="vaucer__ime">Romantic</h3>
+                <p class="vaucer__cena">
+                  <b>70</b><span>EUR za dve osobe</span>
+                </p>
+              </div>
+              <ul class="vaucer__spisak">
+                <li>Prenoćište za dve osobe</li>
+                <li>Korpa svežeg voća i dekoracija u sobi</li>
+                <li>Spa karta za dve osobe</li>
+                <li>Šampanjac uz đakuzi</li>
+              </ul>
+              <p>
+                <a class="veza" href="vauceri.html#romantic"
+                  >Šta sve ulazi <span class="veza__strelica">&rarr;</span></a
+                >
+              </p>
+            </div>
+            <div class="vaucer vaucer--mesing anim">
+              <div class="vaucer__zaglavlje">
+                <h3 class="vaucer__ime">Spa vikend</h3>
+                <p class="vaucer__cena">
+                  <b>140</b><span>EUR za dve osobe</span>
+                </p>
+              </div>
+              <ul class="vaucer__spisak">
+                <li>Dva prenoćišta za dve osobe</li>
+                <li>Prvog dana spa karta za dve osobe</li>
+                <li>Drugog dana dve relax masaže celog tela od 60 minuta</li>
+                <li>Jutarnja kafa u sobi</li>
+              </ul>
+              <p>
+                <a class="veza" href="vauceri.html#spa-vikend"
+                  >Šta sve ulazi <span class="veza__strelica">&rarr;</span></a
+                >
+              </p>
+            </div>
+          </div>
+          <div class="akcije razmak-vrh-veliki anim">
+            <a class="dugme dugme--mesing" href="vauceri.html"
+              >Pogledaj vaučere</a
             >
+            <a class="veza" href="#" data-wa="" data-wa-tema="vaucer"
+              >Poruči preko WhatsApp-a
+              <span class="veza__strelica">&rarr;</span></a
+            >
+          </div>
+        </div>
+      </section>
+      <section class="odeljak">
+        <div class="omot">
+          <div class="blok blok--obrnut blok--tekst-prvi">
+            <figure class="anim-foto">
+              <div class="foto foto--32">
+                <picture
+                  ><source
+                    type="image/webp"
+                    srcset="slike/domacini.webp"
+                    sizes="(min-width: 900px) 46vw, 92vw" />
+                  <img
+                    src="slike/domacini.jpg"
+                    alt="Porodica Stević ispred vile"
+                    width="1400"
+                    height="933"
+                    loading="lazy"
+                    decoding="async"
+                /></picture>
+              </div>
+            </figure>
+            <div class="anim">
+              <p class="natpis">Ko vas dočekuje</p>
+              <h2 class="veliki">Jedna porodica,<br />hiljade uspomena.</h2>
+              <p class="razmak-vrh">
+                Goste dočekuje Zoran. Iza svakog povratka stoji uspomena, iza
+                svake preporuke poverenje. Godine su nas naučile da se kvalitet
+                ne ogleda samo u prostoru, već pre svega u odnosu prema ljudima.
+              </p>
+              <p class="citat razmak-vrh">
+                „Gost po gost, osmeh po osmeh, višnja po višnja."
+              </p>
+              <p class="razmak-vrh">
+                <a class="veza" href="o-nama.html"
+                  >Cela priča <span class="veza__strelica">&rarr;</span></a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="odeljak odeljak--alt">
+        <div class="omot">
+          <div class="uvod anim">
+            <p class="natpis">Česta pitanja</p>
+            <h2 class="uvod__naslov">Ono što se najčešće pita.</h2>
+          </div>
+          <div style="max-width: 860px">
+            <div class="pitanja">
+              <div class="pitanje anim" data-otvoreno="0">
+                <h3>
+                  <button type="button" class="pitanje__dugme">
+                    Kada je prijava, a kada odjava?<span
+                      class="pitanje__znak"
+                      aria-hidden="true"
+                    ></span>
+                  </button>
+                </h3>
+                <div class="pitanje__telo">
+                  <div>
+                    <p>
+                      Soba se izdaje od 14h, a napušta do 10h narednog dana. Ako
+                      vam treba kasnija odjava, pitajte na recepciji.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="pitanje anim" data-otvoreno="0">
+                <h3>
+                  <button type="button" class="pitanje__dugme">
+                    Kako se rezerviše?<span
+                      class="pitanje__znak"
+                      aria-hidden="true"
+                    ></span>
+                  </button>
+                </h3>
+                <div class="pitanje__telo">
+                  <div>
+                    <p>
+                      Izaberite termin i otvorite našu stranicu na Booking-u,
+                      gde stoje cena i slobodni dani. Ako termin koji vam treba
+                      nije tamo, pozovite 064/4500-600. Dolazak istog dana
+                      rešavamo telefonom.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="pitanje anim" data-otvoreno="0">
+                <h3>
+                  <button type="button" class="pitanje__dugme">
+                    Dolazimo sa decom. Gde smo smešteni?<span
+                      class="pitanje__znak"
+                      aria-hidden="true"
+                    ></span>
+                  </button>
+                </h3>
+                <div class="pitanje__telo">
+                  <div>
+                    <p>
+                      U apartmane A i B. Oba primaju dve odrasle osobe i dvoje
+                      dece. Sobe primaju do dve odrasle osobe.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="pitanje anim" data-otvoreno="0">
+                <h3>
+                  <button type="button" class="pitanje__dugme">
+                    Mogu li da biram konkretnu sobu?<span
+                      class="pitanje__znak"
+                      aria-hidden="true"
+                    ></span>
+                  </button>
+                </h3>
+                <div class="pitanje__telo">
+                  <div>
+                    <p>
+                      Birate termin i tip smeštaja. Raspored po sobama pravimo
+                      mi, po dolasku, jer su sobe istog tipa iste.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="pitanje anim" data-otvoreno="0">
+                <h3>
+                  <button type="button" class="pitanje__dugme">
+                    Da li su kućni ljubimci dozvoljeni?<span
+                      class="pitanje__znak"
+                      aria-hidden="true"
+                    ></span>
+                  </button>
+                </h3>
+                <div class="pitanje__telo">
+                  <div>
+                    <p>
+                      Nisu. Objekat nije registrovan za boravak kućnih
+                      ljubimaca.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="pitanje anim" data-otvoreno="0">
+                <h3>
+                  <button type="button" class="pitanje__dugme">
+                    Kako se zakazuje SPA?<span
+                      class="pitanje__znak"
+                      aria-hidden="true"
+                    ></span>
+                  </button>
+                </h3>
+                <div class="pitanje__telo">
+                  <div>
+                    <p>
+                      Na recepciji, po dolasku. Termini se ne zakazuju preko
+                      sajta.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="pitanje anim" data-otvoreno="0">
+                <h3>
+                  <button type="button" class="pitanje__dugme">
+                    Ima li parkinga i wi-fija?<span
+                      class="pitanje__znak"
+                      aria-hidden="true"
+                    ></span>
+                  </button>
+                </h3>
+                <div class="pitanje__telo">
+                  <div>
+                    <p>
+                      Ima, oboje bez naplate. Wi-fi radi u svim sobama i
+                      apartmanima.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="pitanje anim" data-otvoreno="0">
+                <h3>
+                  <button type="button" class="pitanje__dugme">
+                    Kako se kupuje poklon vaučer?<span
+                      class="pitanje__znak"
+                      aria-hidden="true"
+                    ></span>
+                  </button>
+                </h3>
+                <div class="pitanje__telo">
+                  <div>
+                    <p>
+                      Javite nam koji vaučer želite, telefonom, WhatsApp-om ili
+                      preko forme. Posle dogovora šaljemo instrukcije za uplatu.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
     </main>
-
+    <section class="kraj">
+      <div class="kraj__slika">
+        <picture
+          ><source type="image/webp" srcset="slike/vila-noc.webp" />
+          <img
+            src="slike/vila-noc.jpg"
+            alt="Vila Stević uveče, osvetljena staza do ulaza"
+            loading="lazy"
+            decoding="async"
+        /></picture>
+      </div>
+      <div class="kraj__vel"></div>
+      <div class="omot">
+        <div class="kraj__sadrzaj">
+          <h2 class="veliki anim">
+            Cena i slobodni dani<br />stoje na Booking-u.
+          </h2>
+          <p
+            class="anim razmak-vrh"
+            style="color: rgba(255, 255, 255, 0.84); max-width: 34em"
+          >
+            Izaberite termin i otvorite našu stranicu sa cenom za te datume. Ako
+            termina koji vam treba nema, pozovite nas. Dolazak istog dana
+            rešavamo telefonom.
+          </p>
+          <div class="akcije anim razmak-vrh">
+            <a
+              class="dugme dugme--svetlo"
+              href="https://www.booking.com/hotel/rs/vila-stevia.html"
+              data-booking="1"
+              target="_blank"
+              rel="noopener"
+              >Vidi cenu na Booking-u</a
+            >
+            <a class="dugme dugme--tiho" href="tel:+381644500600"
+              >Pozovi 064/4500-600</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
     <footer class="podnozje">
-      <div class="kontejner kontejner--sirok">
+      <div class="omot">
         <div class="podnozje__mreza">
           <div>
-            <p class="podnozje__ime">Vila &amp; SPA Stević</p>
-            <address>
-              Jezerska bb, Beli Bagrem<br />Srebrno jezero, Veliko Gradište
+            <p class="podnozje__znak">Vila &amp; SPA Stević</p>
+            <address class="razmak-vrh">
+              Jezerska bb, Beli Bagrem<br />
+              Srebrno jezero, Veliko Gradište<br />
+              <a href="tel:+381644500600">064/4500-600</a> &middot;
+              <a href="mailto:vilastevic@gmail.com">vilastevic@gmail.com</a>
             </address>
-            <p class="podnozje__stranica" style="margin-top: 8px">
-              Od 2002. na Srebrnom jezeru.
-            </p>
           </div>
           <div>
-            <p class="podnozje__ime">Stranice</p>
-            <ul class="podnozje__linkovi">
-              <li><a href="index.html">Početna</a></li>
+            <p class="podnozje__naslov">Stranice</p>
+            <ul>
               <li><a href="smestaj.html">Smeštaj</a></li>
-              <li><a href="spa.html">SPA</a></li>
+              <li><a href="spa.html">SPA centar</a></li>
+              <li><a href="vauceri.html">Poklon vaučeri</a></li>
               <li><a href="galerija.html">Galerija</a></li>
-              <li><a href="vauceri.html">Vaučeri</a></li>
-              <li><a href="o-nama.html">O nama</a></li>
-              <li><a href="kucni-red.html">Kućni red</a></li>
-              <li><a href="kontakt.html">Kontakt</a></li>
             </ul>
           </div>
           <div>
-            <p class="podnozje__ime">Kontakt</p>
-            <p>
-              <a href="tel:+381644500600" data-cta="podnozje-poziv"
-                >064/4500-600</a
-              ><br /><a
-                href="mailto:vilastevic@gmail.com"
-                data-cta="podnozje-mejl-tekst"
-                >vilastevic@gmail.com</a
-              >
-            </p>
-            <div class="podnozje__ikone" style="margin-top: 12px">
-              <a
-                class="js-wa"
-                href="https://wa.me/381644500600"
-                target="_blank"
-                rel="noopener"
-                aria-label="WhatsApp"
-                title="WhatsApp"
-                data-cta="podnozje-whatsapp"
-                ><svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
+            <p class="podnozje__naslov">Informacije</p>
+            <ul>
+              <li><a href="o-nama.html">O nama</a></li>
+              <li><a href="kucni-red.html">Kućni red</a></li>
+              <li><a href="kontakt.html">Kontakt i lokacija</a></li>
+              <li>
+                <a
+                  href="https://www.booking.com/hotel/rs/vila-stevia.html"
+                  data-booking="1"
+                  target="_blank"
+                  rel="noopener"
+                  >Rezervacija na Booking-u</a
                 >
-                  <path
-                    d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-5A8 8 0 1 1 21 12z"
-                  /></svg
-              ></a>
-              <a
-                href="viber://chat?number=%2B381644500600"
-                aria-label="Viber"
-                title="Viber"
-                data-cta="podnozje-viber"
-                ><svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-5A8 8 0 1 1 21 12z"
-                  />
-                  <path d="M8.5 12h.01M12 12h.01M15.5 12h.01" /></svg
-              ></a>
-              <a
-                href="mailto:vilastevic@gmail.com"
-                aria-label="Mejl"
-                title="Mejl"
-                data-cta="podnozje-mejl"
-                ><svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <rect x="3" y="5" width="18" height="14" rx="2" />
-                  <path d="m3 7 9 6 9-6" /></svg
-              ></a>
-            </div>
+              </li>
+            </ul>
           </div>
         </div>
         <div class="podnozje__dno">
-          <p>
-            <a href="kucni-red.html">Kućni red</a> ·
-            <a href="kontakt.html">Kontakt</a>
-          </p>
-          <p>© <span id="godina">2026</span> Vila &amp; SPA Stević</p>
+          <p>&copy; <span id="godina">2026</span> Vila &amp; SPA Stević</p>
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=44.764638,21.479723"
+            target="_blank"
+            rel="noopener"
+            >Prikaži na mapi</a
+          >
+          <a href="tel:+381644500600">064/4500-600</a>
         </div>
       </div>
     </footer>
-
     <nav class="mobilna" aria-label="Brze akcije">
-      <a href="tel:+381644500600" data-cta="mobilna-poziv"
+      <a href="tel:+381644500600"
         ><svg
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-width="1.8"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          stroke-width="1.3"
           aria-hidden="true"
         >
           <path
-            d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"
+            d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 5.5 5.5L16 12l4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3.5 5.2 2 2 0 0 1 5.5 3z"
           /></svg
-        >Pozovi</a
+        ><span>Pozovi</span></a
       >
-      <a
-        class="js-wa"
-        href="https://wa.me/381644500600"
-        target="_blank"
-        rel="noopener"
-        data-cta="mobilna-whatsapp"
+      <a href="#" data-wa="" data-wa-tema=""
         ><svg
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-width="1.8"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          stroke-width="1.3"
           aria-hidden="true"
         >
-          <path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-5A8 8 0 1 1 21 12z" /></svg
-        >WhatsApp</a
+          <path d="M3.5 20.5 5 16.3A8.4 8.4 0 1 1 8.2 19.3z" />
+          <path
+            d="M8.8 9.2c.3 1 .9 2 1.7 2.8s1.8 1.4 2.8 1.7l1-1.2 2.1.8v1.6c-1.7.5-4-.4-5.9-2.3S8 8.2 8.4 6.5H10l.8 2.1z"
+          /></svg
+        ><span>WhatsApp</span></a
       >
       <a
-        class="mobilna__booking js-booking"
         href="https://www.booking.com/hotel/rs/vila-stevia.html"
+        data-booking="1"
         target="_blank"
         rel="noopener"
-        data-cta="mobilna-booking"
-        >Booking</a
+        ><svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.3"
+          aria-hidden="true"
+        >
+          <path d="M5 4h14v16l-7-3.5L5 20z" /></svg
+        ><span>Cena</span></a
       >
     </nav>
-
-    <dialog class="svetlo" id="svetlo" aria-label="Fotografija">
-      <button class="svetlo__zatvori" type="button" aria-label="Zatvori">
-        ×
+    <dialog class="svetlo-kutija" id="svetlo-kutija" aria-label="Fotografija">
+      <div class="svetlo-kutija__vrh">
+        <span class="svetlo-kutija__broj" data-lb-broj></span>
+        <button type="button" class="svetlo-kutija__x" data-lb-x>
+          Zatvori
+        </button>
+      </div>
+      <div class="svetlo-kutija__slika"><img alt="" data-lb-slika /></div>
+      <button
+        type="button"
+        class="svetlo-kutija__strelica svetlo-kutija__strelica--nazad"
+        data-lb-nazad
+        aria-label="Prethodna"
+      >
+        &#8249;
       </button>
       <button
-        class="svetlo__pre"
         type="button"
-        aria-label="Prethodna fotografija"
+        class="svetlo-kutija__strelica svetlo-kutija__strelica--napred"
+        data-lb-napred
+        aria-label="Sledeća"
       >
-        ‹
+        &#8250;
       </button>
-      <figure>
-        <img
-          src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-          alt=""
-        />
-        <figcaption></figcaption>
-      </figure>
-      <button
-        class="svetlo__sledeca"
-        type="button"
-        aria-label="Sledeća fotografija"
-      >
-        ›
-      </button>
+      <p class="svetlo-kutija__potpis" data-lb-potpis></p>
     </dialog>
-
-    <!-- FORME: pravi endpoint (Formspree ili Web3Forms) se upisuje u const FORM_ENDPOINT na vrhu js/skripta.js. Jedna linija. -->
-    <script src="js/skripta.js"></script>
+    <script src="js/skripta.js" defer></script>
+    <script>
+      document.getElementById("godina").textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>
